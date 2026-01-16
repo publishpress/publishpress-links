@@ -111,10 +111,14 @@ if ( ! class_exists( 'TINYPRESS_Main' ) ) {
 			require_once TINYPRESS_PLUGIN_DIR . 'includes/classes/class-redirection.php';
 
 			new TINYPRESS_Hooks();
-			new TINYPRESS_Meta_boxes();
 			new TINYPRESS_Column_link();
 			new TINYPRESS_Settings();
 			new TINYPRESS_Redirection();
+			
+			// Initialize metaboxes after translations are loaded
+			add_action( 'init', function() {
+				new TINYPRESS_Meta_boxes();
+			}, 1 );
 		}
 
 
