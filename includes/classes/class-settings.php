@@ -43,10 +43,6 @@ if ( ! class_exists( 'TINYPRESS_Settings' ) ) {
 			WPDK_Settings::createSettingsPage( $tinypress_wpdk->plugin_unique_id, $settings_args, $this->get_settings_pages() );
 		}
 
-		function render_field_tinypress_browsers() {
-			include TINYPRESS_PLUGIN_DIR . 'templates/admin/settings/browsers.php';
-		}
-
 		function render_field_tinypress_supports() {
 			include TINYPRESS_PLUGIN_DIR . 'templates/admin/settings/supports.php';
 		}
@@ -163,42 +159,6 @@ if ( ! class_exists( 'TINYPRESS_Settings' ) ) {
 								'attributes' => array(
 									'disabled' => true,
 								),
-							),
-						),
-					),
-					array(
-						'title'  => esc_html__( 'Browser Extensions', 'tinypress' ),
-						'fields' => array(
-							array(
-								'id'           => 'tinypress_chrome_address',
-								'type'         => 'text',
-								'title'        => esc_html__( 'Website Address', 'tinypress' ),
-								'desc'         => esc_html__( 'Click on the field to copy the address.', 'tinypress' ),
-								'default'      => site_url(),
-								'class'        => 'tinypress-settings-copy',
-								'attributes'   => array(
-									'readonly' => true,
-								),
-								'availability' => ! tinypress()::is_license_active() ? 'pro' : '',
-							),
-							array(
-								'id'           => 'tinypress_chrome_auth_key',
-								'type'         => 'text',
-								'title'        => esc_html__( 'Authentication Key', 'tinypress' ),
-								'desc'         => esc_html__( 'Click on the field to copy the authentication key.', 'tinypress' ),
-								'class'        => 'tinypress-settings-copy',
-								'default'      => md5( current_time( 'U' ) ),
-								'attributes'   => array(
-									'readonly' => true,
-								),
-								'availability' => ! tinypress()::is_license_active() ? 'pro' : '',
-							),
-							array(
-								'id'           => 'tinypress_browsers',
-								'type'         => 'callback',
-								'function'     => array( $this, 'render_field_tinypress_browsers' ),
-								'title'        => esc_html__( 'Supported Browsers', 'tinypress' ),
-								'availability' => ! tinypress()::is_license_active() ? 'pro' : '',
 							),
 						),
 					),
