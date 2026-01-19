@@ -97,7 +97,7 @@ if ( ! class_exists( 'TINYPRESS_Hooks' ) ) {
 
 			$post_messages = Utils::get_args_option( 'post', $messages );
 			$post_messages = array_map( function ( $message ) {
-				return str_replace( 'Post', 'PublishPress Shortlinks', $message );
+				return str_replace( 'Post', 'Shortlinks', $message );
 			}, $post_messages );
 
 			$messages['post'] = $post_messages;
