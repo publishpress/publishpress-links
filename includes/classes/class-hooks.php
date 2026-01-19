@@ -97,7 +97,7 @@ if ( ! class_exists( 'TINYPRESS_Hooks' ) ) {
 
 			$post_messages = Utils::get_args_option( 'post', $messages );
 			$post_messages = array_map( function ( $message ) {
-				return str_replace( 'Post', 'PublishPress Links', $message );
+				return str_replace( 'Post', 'PublishPress Shortlinks', $message );
 			}, $post_messages );
 
 			$messages['post'] = $post_messages;
@@ -117,7 +117,7 @@ if ( ! class_exists( 'TINYPRESS_Hooks' ) ) {
 				'singular'            => esc_html__( 'Link', 'tinypress' ),
 				'plural'              => esc_html__( 'All Links', 'tinypress' ),
 				'labels'              => array(
-					'menu_name' => esc_html__( 'Links', 'tinypress' ),
+					'menu_name' => esc_html__( 'Shortlinks', 'tinypress' ),
 				),
 				'menu_icon'           => 'dashicons-admin-links',
 				'supports'            => array( '' ),

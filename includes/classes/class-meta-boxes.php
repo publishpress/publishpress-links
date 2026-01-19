@@ -82,7 +82,7 @@ if ( ! class_exists( 'TINYPRESS_Meta_boxes' ) ) {
 
 			WPDK_Settings::createMetabox( $prefix,
 				array(
-					'title'     => esc_html__( 'PublishPress Links', 'tinypress' ),
+					'title'     => esc_html__( 'PublishPress Shortlinks', 'tinypress' ),
 					'post_type' => $post_type,
 					'data_type' => 'unserialize',
 					'nav'       => 'inline',
@@ -94,7 +94,7 @@ if ( ! class_exists( 'TINYPRESS_Meta_boxes' ) ) {
 
 			WPDK_Settings::createSection( $prefix,
 				array(
-					'title'  => esc_html__( 'PublishPress Links', 'tinypress' ),
+					'title'  => esc_html__( 'PublishPress Shortlinks', 'tinypress' ),
 					'fields' => array(
 						array(
 							'id'       => 'tiny_slug',
@@ -130,7 +130,7 @@ if ( ! class_exists( 'TINYPRESS_Meta_boxes' ) ) {
 			// Create a metabox for tinypress.
 			WPDK_Settings::createMetabox( $this->tinypress_metabox_main,
 				array(
-					'title'     => esc_html__( 'PublishPress Links', 'tinypress' ),
+					'title'     => esc_html__( 'PublishPress Shortlinks', 'tinypress' ),
 					'post_type' => 'tinypress_link',
 					'data_type' => 'unserialize',
 					'context'   => 'normal',

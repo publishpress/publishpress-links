@@ -35,7 +35,7 @@ class TINYPRESS_Column_link {
 
 	function tinypress_copy_columns( $columns ) {
 
-		$columns['tinypress-link'] = esc_html__( 'PublishPress Links', 'tinypress' );
+		$columns['tinypress-link'] = esc_html__( 'Shortlinks', 'tinypress' );
 
 		return $columns;
 	}

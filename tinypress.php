@@ -1,12 +1,12 @@
 <?php
 /*
-	Plugin Name: tinyPress - Shorten and Track URLs
+	Plugin Name: PublishPress Shortlinks - Shorten and Track URLs
 	Plugin URI: https://pluginbazar.com/plugins/tinypress-shorten-and-track-your-urls/
-	Description: No more long URL, Shorten and track it with tinyPress.
+	Description: No more long URL, Shorten and track it with PublishPress Shortlinks.
 	Version: 1.2.5
 	Text Domain: tinypress
-	Author: Pluginbazar
-	Author URI: https://pluginbazar.com/
+	Author: PublishPress
+	Author URI: https://publishpress.com/
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
