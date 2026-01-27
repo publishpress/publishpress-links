@@ -84,6 +84,7 @@ Yes! tinyPress is ready for translation. You can translate easily as you do for 
 - REMOVED: Remove brand logo, #14
 - UPDATE: Update the Help and Supports feature, #13
 - UPDATE: Use PublishPress colors and design, #20
+- UPDATE: tinypress-1.2.5-Translation Updates ES-FR-IT, #30
 
 = 1.2.5 - 14 March 2025 =
 - FIX: Readme updated with more content.
