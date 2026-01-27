@@ -114,7 +114,7 @@ if ( ! class_exists( 'TINYPRESS_Settings' ) ) {
 							array(
 								'id'         => 'tinypress_role_view',
 								'type'       => 'checkbox',
-								'title'      => esc_html__( 'Who Can View Links?', 'tinypress' ),
+								'title'      => esc_html__( 'Who Can View Links', 'tinypress' ),
 								'subtitle'   => esc_html__( 'Upcoming feature.', 'tinypress' ),
 								'desc'       => esc_html__( 'Only selected user roles can view links.', 'tinypress' ),
 								'inline'     => true,

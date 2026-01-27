@@ -219,8 +219,8 @@ if ( ! class_exists( 'TINYPRESS_Meta_boxes' ) ) {
 						array(
 							'id'       => 'redirection_no_follow',
 							'type'     => 'switcher',
-							'title'    => esc_html__( 'No Follow', 'tinypress' ),
-							'subtitle' => esc_html__( 'Add no follow attribute.', 'tinypress' ),
+							'title'    => esc_html__( 'NoFollow', 'tinypress' ),
+							'subtitle' => esc_html__( 'Add nofollow attribute.', 'tinypress' ),
 							'label'    => esc_html__( 'We recommended to use this.', 'tinypress' ),
 							'default'  => true,
 						),
