@@ -23,7 +23,7 @@ if ( ! class_exists( 'WPDK_Settings_Options' ) ) {
 		public $args = array(
 
 			// framework title
-			'framework_title'    => 'WPDK Settings Panel',
+			'framework_title'    => 'Settings Panel',
 			'framework_class'    => '',
 
 			// menu settings
