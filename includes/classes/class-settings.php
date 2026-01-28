@@ -29,7 +29,6 @@ if ( ! class_exists( 'TINYPRESS_Settings' ) ) {
 
 			// Generate settings page
 			$settings_args = array(
-				'framework_title' => '<img style="max-width: 220px;" src="' . TINYPRESS_PLUGIN_URL . '/assets/images/publishpress-shortlinks.svg">',
 				'menu_title'      => esc_html__( 'Settings', 'tinypress' ),
 				'menu_slug'       => 'settings',
 				'menu_type'       => 'submenu',
@@ -115,7 +114,7 @@ if ( ! class_exists( 'TINYPRESS_Settings' ) ) {
 							array(
 								'id'         => 'tinypress_role_view',
 								'type'       => 'checkbox',
-								'title'      => esc_html__( 'Who Can View Links?', 'tinypress' ),
+								'title'      => esc_html__( 'Who Can View Links', 'tinypress' ),
 								'subtitle'   => esc_html__( 'Upcoming feature.', 'tinypress' ),
 								'desc'       => esc_html__( 'Only selected user roles can view links.', 'tinypress' ),
 								'inline'     => true,

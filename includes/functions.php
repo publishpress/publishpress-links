@@ -238,7 +238,14 @@ if ( ! function_exists( 'tinypress_get_tinyurl' ) ) {
 		}
 
 		// added the tiny slug
-		$tinyurl_parts[] = Utils::get_meta( 'tiny_slug', $tinypress_link_id );
+		$tiny_slug = Utils::get_meta( 'tiny_slug', $tinypress_link_id );
+		
+		if ( empty( $tiny_slug ) ) {
+			$tiny_slug = tinypress_create_url_slug();
+			update_post_meta( $tinypress_link_id, 'tiny_slug', $tiny_slug );
+		}
+		
+		$tinyurl_parts[] = $tiny_slug;
 
 		return apply_filters( 'TINYPRESS/Filters/get_tinyurl', implode( '/', $tinyurl_parts ), $tinypress_link_id, $tinyurl_parts );
 	}
