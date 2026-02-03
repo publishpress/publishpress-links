@@ -30,7 +30,6 @@ if ( ! class_exists( 'TINYPRESS_Settings' ) ) {
 		 * @return array
 		 */
 		function sanitize_autolist_settings( $request, $args ) {
-			// Only process our settings
 			if ( ! isset( $request['tinypress_autolist_post_types'] ) ) {
 				return $request;
 			}
@@ -41,8 +40,6 @@ if ( ! class_exists( 'TINYPRESS_Settings' ) ) {
 				return $request;
 			}
 
-			// Get all valid public post types at save time (not init time)
-			// This ensures CPT UI and other late-registered post types are included
 			$all_post_types = get_post_types( array( 'public' => true ), 'names' );
 			$valid_post_types = array_diff( $all_post_types, array( 'attachment', 'tinypress_link' ) );
 			
@@ -51,24 +48,20 @@ if ( ! class_exists( 'TINYPRESS_Settings' ) ) {
 			$sanitized = array();
 
 			foreach ( $post_types as $config ) {
-				// Skip entries with missing or empty post_type
 				if ( ! isset( $config['post_type'] ) || empty( $config['post_type'] ) || trim( $config['post_type'] ) === '' ) {
 					continue;
 				}
 
 				$post_type = trim( $config['post_type'] );
 
-				// Skip if invalid post type (not registered or excluded)
 				if ( ! in_array( $post_type, $valid_post_types ) ) {
 					continue;
 				}
 
-				// Skip if duplicate
 				if ( isset( $seen[ $post_type ] ) ) {
 					continue;
 				}
 
-				// Ensure behavior is set
 				if ( ! isset( $config['behavior'] ) || empty( $config['behavior'] ) ) {
 					$config['behavior'] = 'never';
 				}
@@ -332,11 +325,9 @@ if ( ! class_exists( 'TINYPRESS_Settings' ) ) {
 		 * Render custom AJAX-powered autolist field
 		 */
 		public function render_autolist_ajax_field() {
-			// Get the full settings array, then extract autolist config
 			$all_settings = get_option( 'tinypress_settings', array() );
 			$config = isset( $all_settings['tinypress_autolist_post_types'] ) ? $all_settings['tinypress_autolist_post_types'] : array();
 			
-			// Add default post and page entries if config is empty
 			if ( empty( $config ) ) {
 				$config = array(
 					array(

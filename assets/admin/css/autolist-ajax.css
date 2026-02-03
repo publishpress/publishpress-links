@@ -170,7 +170,6 @@
     }
 }
 
-/* Empty state */
 .tinypress-autolist-empty {
     text-align: center;
     padding: 40px;
@@ -188,7 +187,6 @@
     opacity: 0.5;
 }
 
-/* PPMA Select2 integration */
 .ppma_select2-container {
     z-index: 1;
 }
@@ -219,7 +217,6 @@
     background-color: #2271b1;
 }
 
-/* Responsive */
 @media (max-width: 782px) {
     .tinypress-autolist-row {
         flex-direction: column;
