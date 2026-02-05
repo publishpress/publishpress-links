@@ -19,6 +19,26 @@ body.post-type-tinypress_link .wpdk_settings-metabox {
     margin-top: -20px;
 }
 
+#side-sortables [id*="tinypress_shortlinks"] .inside {
+    margin: 0;
+    padding: 0;
+}
+
+#side-sortables [id*="tinypress_shortlinks"] .tiny-slug-wrap {
+    padding: 12px;
+    display: block;
+    width: 86%;
+}
+
+#side-sortables .tiny-slug-wrap .tiny-slug-preview {
+    font-weight: normal;
+}
+
+#side-sortables .tiny-slug-wrap .tiny-slug-preview .prefix,
+#side-sortables .tiny-slug-wrap .tiny-slug-preview .tiny-slug {
+    font-weight: normal;
+}
+
 body.post-type-tinypress_link #submitdiv {
     border: none;
     background: transparent;
@@ -301,17 +321,18 @@ table.tinypress_link_page_tinypress-reports th#details {
 }
 
 .tiny-slug-wrap .tiny-slug-preview {
-    border: none;
-    padding: 16px;
-    background-color: #393e46;
-    color: #ffd350;
+    border: 1px solid #dcdcde;
+    padding: 8px 12px;
+    background-color: #f6f7f7;
+    color: #2c3338;
     cursor: pointer;
-    border-radius: 3px;
+    border-radius: 4px;
     width: 100%;
     display: inline-block;
     box-sizing: border-box;
-    font-size: 16px;
+    font-size: 13px;
     overflow-wrap: anywhere;
+    line-height: 1.5;
 }
 
 .tiny-slug-wrap.mini .tiny-slug-preview {
@@ -333,25 +354,30 @@ table.tinypress_link_page_tinypress-reports th#details {
 }
 
 .tiny-slug-wrap .tinypress-slug-field {
-    margin-top: 10px;
+    margin-top: 8px;
     width: 100%;
 }
 
 .tiny-slug-wrap .tinypress-slug-field input[type=text],
 .tiny-slug-wrap .tinypress-slug-field textarea {
-    padding: 10px 8px;
-    border: 1px solid #eee;
+    padding: 6px 8px;
+    border: 1px solid #8c8f94;
+    border-radius: 4px;
     transition: 0.3s;
-    width: 100px;
+    width: 100%;
+    font-size: 13px;
+    line-height: 1.5;
+    background-color: #fff;
+    color: #2c3338;
 }
 
 .tiny-slug-wrap .tinypress-slug-field input[type=text]:focus,
 .tiny-slug-wrap .tinypress-slug-field input[type=text]:focus:active,
 .tiny-slug-wrap .tinypress-slug-field textarea:focus,
 .tiny-slug-wrap .tinypress-slug-field textarea:focus:active {
-    border-color: var(--tinypress-color-primary);
-    box-shadow: none;
-    outline: none;
+    border-color: #2271b1;
+    box-shadow: 0 0 0 1px #2271b1;
+    outline: 2px solid transparent;
 }
 
 .link-actions a.action {

@@ -130,6 +130,15 @@ if ( ! class_exists( 'TINYPRESS_Redirection' ) ) {
 
 			global $wpdb;
 
+			if ( is_user_logged_in() ) {
+				$current_user_id = get_current_user_id();
+				$post = get_post( $link_id );
+				
+				if ( $post && ( $current_user_id == $post->post_author || current_user_can( 'edit_post', $link_id ) ) ) {
+					return;
+				}
+			}
+
 			$get_ip_address = tinypress_get_ip_address();
 			$curr_user_id   = is_user_logged_in() ? get_current_user_id() : 0;
 			$location_info  = array(
@@ -251,26 +260,39 @@ if ( ! class_exists( 'TINYPRESS_Redirection' ) ) {
 		 */
 		public function redirection_controller() {
 
-			if ( is_single() || is_archive() ) {
+			$link_prefix      = Utils::get_option( 'tinypress_link_prefix' );
+			$link_prefix_slug = Utils::get_option( 'tinypress_link_prefix_slug', 'go' );
+			$tiny_slug_1      = trim( $this->get_request_uri(), '/' );
+
+			$is_prefix_request = ( '1' == $link_prefix && strpos( $tiny_slug_1, $link_prefix_slug ) !== false );
+
+			if ( ! $is_prefix_request && ( is_single() || is_archive() ) ) {
 				return;
 			}
 
-			$link_prefix      = Utils::get_option( 'tinypress_link_prefix' );
-			$link_prefix_slug = Utils::get_option( 'tinypress_link_prefix_slug', 'go' );
-
-			$tiny_slug_1 = trim( $this->get_request_uri(), '/' );
 			$tiny_slug_2 = ( '1' == $link_prefix ) ? str_replace( $link_prefix_slug . '/', '', $tiny_slug_1 ) : $tiny_slug_1;
 			$tiny_slug_3 = explode( '?', $tiny_slug_2 );
 			$tiny_slug_4 = $tiny_slug_3[0] ?? '';
 			$link_id     = tinypress()->tiny_slug_to_post_id( $tiny_slug_4 );
 
-			if ( ! empty( $link_id ) && $link_id !== 0 && is_404() && ! is_page( $tiny_slug_4 ) ) {
+			if ( ! empty( $link_id ) && $link_id !== 0 ) {
 
-				if ( '1' == $link_prefix && strpos( $tiny_slug_1, $link_prefix_slug ) === false ) {
-					wp_die( esc_html__( 'This link is not containing the right prefix slug.', 'tinypress' ) );
+				$is_shortlink_request = false;
+				
+				if ( '1' == $link_prefix ) {
+					$is_shortlink_request = ( strpos( $tiny_slug_1, $link_prefix_slug ) !== false );
+				} else {
+					$is_shortlink_request = is_404();
 				}
+				
+				if ( $is_shortlink_request && ! is_page( $tiny_slug_4 ) ) {
 
-				$this->check_protection( $link_id );
+					if ( '1' == $link_prefix && strpos( $tiny_slug_1, $link_prefix_slug ) === false ) {
+						wp_die( esc_html__( 'This link is not containing the right prefix slug.', 'tinypress' ) );
+					}
+
+					$this->check_protection( $link_id );
+				}
 			}
 		}
 
