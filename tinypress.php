@@ -116,12 +116,14 @@ if ( ! class_exists( 'TINYPRESS_Main' ) ) {
 			require_once TINYPRESS_PLUGIN_DIR . 'includes/classes/class-redirection.php';
 			require_once TINYPRESS_PLUGIN_DIR . 'includes/classes/class-autolist.php';
 			require_once TINYPRESS_PLUGIN_DIR . 'includes/classes/class-autolist-ajax.php';
+			require_once TINYPRESS_PLUGIN_DIR . 'includes/classes/class-reviews.php';
 
 			new TINYPRESS_Hooks();
 			new TINYPRESS_Settings();
 			new TINYPRESS_Redirection();
 			new TINYPRESS_AutoList();
 			TINYPRESS_Autolist_Ajax::instance();
+			TINYPRESS_Reviews::instance();
 			
 			// Initialize metaboxes early for proper registration
 			add_action( 'init', function() {
