@@ -34,6 +34,7 @@ if ( ! class_exists( 'TINYPRESS_Meta_boxes' ) ) {
 				}
 			}
 
+			add_action( 'add_meta_boxes', array( $this, 'add_side_meta_box' ), 0 );
 			add_action( 'WPDK_Settings/meta_section/analytics', array( $this, 'render_analytics' ) );
 		}
 
@@ -57,6 +58,16 @@ if ( ! class_exists( 'TINYPRESS_Meta_boxes' ) ) {
 			echo '<div class="tinypress-meta-side">';
 			include TINYPRESS_PLUGIN_DIR . 'templates/admin/qr-code.php';
 			echo '</div>';
+		}
+
+
+		/**
+		 * Add Side Meta Box
+		 *
+		 * @return void
+		 */
+		function add_side_meta_box() {
+			add_meta_box( 'tinypress-meta-side', esc_html__( 'Side', 'tinypress' ), array( $this, 'render_side_box' ), 'tinypress_link', 'side', 'core' );
 		}
 
 
