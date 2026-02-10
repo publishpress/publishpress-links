@@ -265,14 +265,13 @@ if ( ! class_exists( 'TINYPRESS_Settings' ) ) {
 						),
 					),
 					array(
-						'title'  => esc_html__( 'Auto-List Links for Post Types', 'tinypress' ),
+						'title'  => esc_html__( 'Auto-List Links', 'tinypress' ),
 						'fields' => array(
 							array(
 								'id'       => 'tinypress_autolist_enabled',
 								'type'     => 'switcher',
 								'title'    => esc_html__( 'Enable Auto-Listing Links', 'tinypress' ),
-								'subtitle' => esc_html__( 'Automatically list post type shortlinks in the "All Links" table', 'tinypress' ),
-								'label'    => esc_html__( 'When enabled, shortlinks for posts, pages, and other post types will appear in the "All Links" table based on the behavior you configure below.', 'tinypress' ),
+								'label'    => esc_html__( 'When enabled, shortlinks will appear in the "All Links" table based on the behavior you configure below.', 'tinypress' ),
 								'default'  => false,
 							),
 							array(
