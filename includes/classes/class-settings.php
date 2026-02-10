@@ -302,7 +302,7 @@ if ( ! class_exists( 'TINYPRESS_Settings' ) ) {
 									'private' => esc_html__( 'Private', 'tinypress' ),
 									'future'  => esc_html__( 'Scheduled', 'tinypress' ),
 								),
-								'default'  => array( 'publish' ),
+								'default'  => array( 'publish', 'draft', 'pending', 'private', 'future' ),
 							),
 						),
 					),
