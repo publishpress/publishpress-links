@@ -177,8 +177,7 @@ if ( ! class_exists( 'TINYPRESS_Settings' ) ) {
 								'id'       => 'tinypress_link_prefix',
 								'type'     => 'switcher',
 								'title'    => esc_html__( 'Link Prefix', 'tinypress' ),
-								'subtitle' => esc_html__( 'Add custom prefix.', 'tinypress' ),
-								'label'    => esc_html__( 'Customize your tiny url in a better way.', 'tinypress' ),
+								'label'    => esc_html__( 'Add a prefix between your domain name and shortlink.', 'tinypress' ),
 								'default'  => true,
 							),
 							array(
@@ -186,7 +185,7 @@ if ( ! class_exists( 'TINYPRESS_Settings' ) ) {
 								'type'        => 'text',
 								'title'       => esc_html__( 'Prefix Slug', 'tinypress' ),
 								'subtitle'    => esc_html__( 'Custom prefix slug.', 'tinypress' ),
-								'desc'        => esc_html( sprintf( __( 'This prefix slug will be added this way - %s', 'tinypress' ), esc_url( site_url( 'go/my-tiny-slug' ) ) ) ),
+								'desc'        => esc_html__( 'This text will be added between your domain name and shortlink.', 'tinypress' ),
 								'placeholder' => esc_html__( 'go', 'tinypress' ),
 								'default'     => esc_html__( 'go', 'tinypress' ),
 								'dependency'  => array( 'tinypress_link_prefix', '==', '1' ),
@@ -195,9 +194,7 @@ if ( ! class_exists( 'TINYPRESS_Settings' ) ) {
 								'id'          => 'tinypress_kb_shortcut',
 								'type'        => 'text',
 								'title'       => esc_html__( 'Keyboard Shortcut', 'tinypress' ),
-								'subtitle'    => esc_html__( 'Configure your K/B', 'tinypress' ),
-								'desc'        => esc_html__( 'You can now short your large links from anywhere inside your WordPress dashboard.', 'tinypress' ) . '<br>' .
-								                 esc_html__( 'For now you have no option to set your own shortcut but this will come soon.', 'tinypress' ),
+								'desc'        => esc_html__( 'Create shortlinks from anywhere inside your WordPress dashboard.', 'tinypress' ),
 								'placeholder' => esc_html__( 'Ctrl or Cmd + /', 'tinypress' ),
 								'default'     => esc_html__( 'Ctrl or Cmd + /', 'tinypress' ),
 								'attributes'  => array(
@@ -208,8 +205,7 @@ if ( ! class_exists( 'TINYPRESS_Settings' ) ) {
 							array(
 								'id'       => 'tinypress_hide_modal_opener',
 								'type'     => 'switcher',
-								'title'    => esc_html__( 'Hide Modal Opener', 'tinypress' ),
-								'subtitle' => esc_html__( 'Remove from WP Admin Bar', 'tinypress' ),
+								'title'    => esc_html__( 'Remove from Admin Bar', 'tinypress' ),
 								'label'    => esc_html__( 'Hide quick short link modal opener from WP Admin Bar.', 'tinypress' ),
 								'default'  => false,
 							),
