@@ -158,9 +158,7 @@ if ( ! class_exists( 'TINYPRESS_Settings' ) ) {
 		function get_settings_pages() {
 
 			$user_roles = tinypress_get_roles();
-			
-			// Get post type options dynamically when settings page is rendered
-			// This ensures CPT UI and other late-registered post types are included
+
 			$post_type_options = $this->get_post_type_options();
 
 			$field_sections['settings'] = array(
@@ -227,7 +225,7 @@ if ( ! class_exists( 'TINYPRESS_Settings' ) ) {
 								'inline'       => true,
 								'options'      => $user_roles,
 								'default'      => array( 'administrator', 'editor', 'author' ),
-								'attributes'   => ! defined( 'TINYPRESS_PRO_VERSION' ) ? array( 'disabled' => true ) : array(),
+								'attributes'   => ! defined( 'PUBLISHPRESS_SHORTLINKS_PRO_VERSION' ) ? array( 'disabled' => true ) : array(),
 							),
 							array(
 								'id'           => 'tinypress_role_analytics',
@@ -237,7 +235,7 @@ if ( ! class_exists( 'TINYPRESS_Settings' ) ) {
 								'inline'       => true,
 								'options'      => $user_roles,
 								'default'      => array( 'administrator', 'editor' ),
-								'attributes'   => ! defined( 'TINYPRESS_PRO_VERSION' ) ? array( 'disabled' => true ) : array(),
+								'attributes'   => ! defined( 'PUBLISHPRESS_SHORTLINKS_PRO_VERSION' ) ? array( 'disabled' => true ) : array(),
 							),
 							array(
 								'id'           => 'tinypress_role_edit',
@@ -247,7 +245,7 @@ if ( ! class_exists( 'TINYPRESS_Settings' ) ) {
 								'inline'       => true,
 								'options'      => $user_roles,
 								'default'      => array( 'administrator', 'editor', 'author' ),
-								'attributes'   => ! defined( 'TINYPRESS_PRO_VERSION' ) ? array( 'disabled' => true ) : array(),
+								'attributes'   => ! defined( 'PUBLISHPRESS_SHORTLINKS_PRO_VERSION' ) ? array( 'disabled' => true ) : array(),
 							),
 						), $user_roles ),
 					),

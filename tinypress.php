@@ -14,7 +14,6 @@
 global $wpdb;
 defined( 'ABSPATH' ) || exit;
 
-// Check if Pro version is active and deactivate Free if so
 if ( ! function_exists( 'tinypress_check_pro_active' ) ) {
 	function tinypress_check_pro_active() {
 		$pro_active = false;
@@ -41,7 +40,6 @@ if ( ! function_exists( 'tinypress_check_pro_active' ) ) {
 
 $pro_active = tinypress_check_pro_active();
 
-// Add message to plugin row if Pro is active
 if ( $pro_active ) {
 	add_filter(
 		'plugin_row_meta',
@@ -56,17 +54,14 @@ if ( $pro_active ) {
 	);
 }
 
-// Prevent loading if Pro is active or if TINYPRESS_FILE is already defined
 if ( defined( 'TINYPRESS_FILE' ) || $pro_active ) {
 	if ( ! function_exists( 'deactivate_plugins' ) ) {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 	}
-	// Deactivate current plugin if pro is active
 	deactivate_plugins( plugin_basename( __FILE__ ) );
 	return;
 }
 
-// Define the main constant to prevent duplicate loading
 define( 'TINYPRESS_FILE', __FILE__ );
 
 if (!defined('TINYPRESS_PLUGIN_VERSION')) {
@@ -196,10 +191,8 @@ if ( ! class_exists( 'TINYPRESS_Main' ) ) {
 		 * @return void
 		 */
 		function initialize_default_settings() {
-			// Check if we need to initialize defaults (for sites upgrading from older versions)
 			$settings = get_option( 'tinypress_settings', array() );
 			
-			// If settings exist but autolist settings are missing, initialize them
 			if ( is_array( $settings ) && ! empty( $settings ) && ! isset( $settings['tinypress_autolist_enabled'] ) ) {
 				$this->set_default_settings();
 			}
@@ -423,7 +416,7 @@ if ( ! function_exists( 'pb_sdk_init_tinypress' ) ) {
 
 		global $tinypress_wpdk;
 
-		$tinypress_wpdk = new WPDK\Client( esc_html( 'TinyPress - Shorten and Track your links' ), 'tinypress', 35, __FILE__ );
+		$tinypress_wpdk = new WPDK\Client( esc_html( 'PublishPress Shortlinks - Shorten and Track your links' ), 'tinypress', 35, __FILE__ );
 
 		do_action( 'pb_sdk_init_tinypress', $tinypress_wpdk );
 	}
@@ -440,7 +433,7 @@ TINYPRESS_Main::instance();
 
 // Init Free-only features
 function init_free_tinypress() {
-	if ( is_admin() && ! defined( 'TINYPRESS_PRO_VERSION' ) ) {
+	if ( is_admin() && ! defined( 'PUBLISHPRESS_SHORTLINKS_PRO_VERSION' ) ) {
 		require_once( TINYPRESS_ABSPATH . '/includes-core/ShortlinksCoreAdmin.php' );
 		new \PublishPress\Shortlinks\ShortlinksCoreAdmin();
 	}
