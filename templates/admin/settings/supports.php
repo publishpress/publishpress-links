@@ -9,7 +9,7 @@ $upgrade_url = defined( 'TINYPRESS_LINK_PRO' ) ? TINYPRESS_LINK_PRO : 'https://p
 ?>
 
 <div class="tinypress-settings-sidebar">
-    <?php if ( ! defined( 'TINYPRESS_PRO_VERSION' ) ) : ?>
+    <?php if ( ! defined( 'PUBLISHPRESS_SHORTLINKS_PRO_VERSION' ) ) : ?>
     <div class="tinypress-support-sidebar" style="margin-bottom: 20px;">
         <div class="support-box-content postbox">
             <div class="postbox-header">

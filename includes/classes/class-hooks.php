@@ -243,7 +243,7 @@ if ( ! class_exists( 'TINYPRESS_Hooks' ) ) {
 		 * @return bool
 		 */
 		public static function current_user_can_create() {
-			if ( ! defined( 'TINYPRESS_PRO_VERSION' ) ) {
+			if ( ! defined( 'PUBLISHPRESS_SHORTLINKS_PRO_VERSION' ) ) {
 				return true;
 			}
 			return self::user_has_role_access( 'tinypress_role_create' );
@@ -255,7 +255,7 @@ if ( ! class_exists( 'TINYPRESS_Hooks' ) ) {
 		 * @return bool
 		 */
 		public static function current_user_can_settings() {
-			if ( ! defined( 'TINYPRESS_PRO_VERSION' ) ) {
+			if ( ! defined( 'PUBLISHPRESS_SHORTLINKS_PRO_VERSION' ) ) {
 				return true;
 			}
 			return self::user_has_role_access( 'tinypress_role_edit' );
