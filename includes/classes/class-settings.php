@@ -327,11 +327,11 @@ if ( ! class_exists( 'TINYPRESS_Settings' ) ) {
 				$config = array(
 					array(
 						'post_type' => 'post',
-						'behavior' => 'on_first_use'
+						'behavior' => 'on_first_use_or_on_create'
 					),
 					array(
 						'post_type' => 'page',
-						'behavior' => 'on_first_use'
+						'behavior' => 'on_first_use_or_on_create'
 					)
 				);
 			}
@@ -367,8 +367,10 @@ if ( ! class_exists( 'TINYPRESS_Settings' ) ) {
 								<div class="tinypress-autolist-field">
 									<select class="tinypress-autolist-behavior">
 										<option value="never" <?php selected( $item['behavior'], 'never' ); ?>><?php esc_html_e( 'Never', 'tinypress' ); ?></option>
-										<option value="on_first_use" <?php selected( $item['behavior'], 'on_first_use' ); ?>><?php esc_html_e( 'On First Use', 'tinypress' ); ?></option>
-										<option value="on_publish" <?php selected( $item['behavior'], 'on_publish' ); ?>><?php esc_html_e( 'On Publish', 'tinypress' ); ?></option>
+                                        <option value="on_first_use_or_on_create" <?php selected( $item['behavior'], 'on_first_use_or_on_create' ); ?>><?php esc_html_e( 'When Link is First Used or Post Created', 'tinypress' ); ?></option>
+                                        <option value="on_first_use" <?php selected( $item['behavior'], 'on_first_use' ); ?>><?php esc_html_e( 'When Link is First Used', 'tinypress' ); ?></option>
+                                        <option value="on_create" <?php selected( $item['behavior'], 'on_create' ); ?>><?php esc_html_e( 'When Post is Created', 'tinypress' ); ?></option>
+                                        <option value="on_publish" <?php selected( $item['behavior'], 'on_publish' ); ?>><?php esc_html_e( 'When Post is Published', 'tinypress' ); ?></option>
 									</select>
 								</div>
 								<div class="tinypress-autolist-actions">

@@ -24,9 +24,11 @@ if ( ! class_exists( 'TINYPRESS_AutoList' ) ) {
 		function __construct() {
 			add_action( 'transition_post_status', array( $this, 'tinypress_handle_post_publish' ), 10, 3 );
 			add_action( 'tinypress_before_redirect_track', array( $this, 'tinypress_handle_first_use' ), 10, 1 );
+			add_action( 'wp_insert_post', array( $this, 'tinypress_handle_post_created' ), 10, 3 );
 			add_action( 'updated_post_meta', array( $this, 'sync_tiny_slug_to_source' ), 10, 4 );
 			add_action( 'updated_post_meta', array( $this, 'tinypress_sync_source_to_link' ), 10, 4 );
 			add_action( 'save_post_tinypress_link', array( $this, 'tinypress_sync_on_link_save' ), 20, 3 );
+            add_action( 'save_post', array( $this, 'sync_link_title_from_source' ), 10, 3 );
 		}
 
 		/**
@@ -207,7 +209,7 @@ if ( ! class_exists( 'TINYPRESS_AutoList' ) ) {
 
 			$behavior = $this->get_post_type_behavior( $post->post_type );
 
-			if ( $behavior !== 'on_first_use' ) {
+			if ( ! in_array( $behavior, array( 'on_first_use', 'on_first_use_or_on_create' ) ) ) {
 				return;
 			}
 
@@ -216,6 +218,71 @@ if ( ! class_exists( 'TINYPRESS_AutoList' ) ) {
 			if ( ! $existing_link_id ) {
 				$this->tinypress_create_link_entry( $post_id );
 			}
+		}
+
+		/**
+		 * Handle post creation event (On Create behavior)
+		 *
+		 * @param int $post_id
+		 * @param WP_Post $post
+		 * @param bool $update
+		 *
+		 * @return void
+		 */
+		function tinypress_handle_post_created( $post_id, $post, $update ) {
+			if ( $update ) {
+				return;
+			}
+
+			if ( $post->post_type === 'tinypress_link' || $post->post_type === 'attachment' ) {
+				return;
+			}
+
+			$behavior = $this->get_post_type_behavior( $post->post_type );
+
+			if ( ! in_array( $behavior, array( 'on_create', 'on_first_use_or_on_create' ) ) ) {
+				return;
+			}
+
+			$existing_link_id = $this->get_existing_tinypress_link_entry( $post_id );
+
+			if ( ! $existing_link_id ) {
+				$this->tinypress_create_link_entry( $post_id );
+			}
+		}
+
+		/**
+		 * Sync the tinypress_link post title with the source post title
+		 *
+		 * @param int $post_id
+		 * @param WP_Post $post
+		 * @param string $post_before
+		 *
+		 * @return void
+		 */
+		function sync_link_title_from_source( $post_id, $post, $post_before ) {
+			if ( $post->post_type === 'tinypress_link' || $post->post_type === 'attachment' ) {
+				return;
+			}
+
+			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+				return;
+			}
+
+			if ( isset( $post_before->post_title ) && $post_before->post_title === $post->post_title ) {
+				return;
+			}
+
+			$link_id = $this->get_existing_tinypress_link_entry( $post_id );
+
+			if ( ! $link_id ) {
+				return;
+			}
+
+			wp_update_post( array(
+				'ID'         => $link_id,
+				'post_title' => $post->post_title,
+			) );
 		}
 
 		/**

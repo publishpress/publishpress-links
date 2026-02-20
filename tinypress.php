@@ -140,18 +140,22 @@ if ( ! class_exists( 'TINYPRESS_Main' ) ) {
 			    user_ip varchar(255) NOT NULL,
 			    user_location varchar(1024) NOT NULL,
 	            datetime  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	            PRIMARY KEY (id)
-            );";
+            is_cleared TINYINT(1) NOT NULL DEFAULT 0,
+            PRIMARY KEY (id)
+        );";
 
-			maybe_create_table( TINYPRESS_TABLE_REPORTS, $sql_create_table );
+		maybe_create_table( TINYPRESS_TABLE_REPORTS, $sql_create_table );
+
+		global $wpdb;
+		$column_exists = $wpdb->get_results( $wpdb->prepare(
+			"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = %s AND COLUMN_NAME = 'is_cleared'",
+			$wpdb->prefix . 'tinypress_reports'
+		) );
+
+		if ( empty( $column_exists ) ) {
+			$wpdb->query( "ALTER TABLE " . TINYPRESS_TABLE_REPORTS . " ADD COLUMN is_cleared TINYINT(1) NOT NULL DEFAULT 0" );
 		}
-
-
-		/**
-		 * Set default settings on plugin activation
-		 *
-		 * @return void
-		 */
+	}
 		function set_default_settings() {
 			$settings = get_option( 'tinypress_settings', array() );
 			
@@ -168,11 +172,11 @@ if ( ! class_exists( 'TINYPRESS_Main' ) ) {
 					$settings['tinypress_autolist_post_types'] = array(
 						array(
 							'post_type' => 'post',
-							'behavior' => 'on_first_use'
+							'behavior' => 'on_first_use_or_on_create'
 						),
 						array(
 							'post_type' => 'page',
-							'behavior' => 'on_first_use'
+							'behavior' => 'on_first_use_or_on_create'
 						)
 					);
 				}
