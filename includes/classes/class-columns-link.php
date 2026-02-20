@@ -111,6 +111,14 @@ class TINYPRESS_Column_link {
 				echo tinypress_get_tiny_slug_copier( $post_id, false, array( 'wrapper_class' => 'mini' ) );
 				break;
 
+			case 'link-type':
+				$link_type = $this->get_link_type( $post_id );
+				$badge_class = 'internal' === $link_type ? 'internal-badge' : 'external-badge';
+				$badge_text = 'internal' === $link_type ? esc_html__( 'Internal', 'tinypress' ) : esc_html__( 'External', 'tinypress' );
+				$tooltip_text = 'internal' === $link_type ? esc_html__( 'This links to your post', 'tinypress' ) : esc_html__( 'This links to an external website', 'tinypress' );
+				echo '<span class="tinypress-link-type-badge ' . esc_attr( $badge_class ) . ' pp-tooltips-library" data-toggle="tooltip">' . $badge_text . '<span class="tinypress tooltip-text">' . $tooltip_text . '</span></span>';
+				break;
+
 			case 'click-count':
 
 				global $wpdb;
@@ -136,6 +144,31 @@ class TINYPRESS_Column_link {
 		}
 	}
 
+	/**
+	 * Determine if a link is internal or external
+	 *
+	 * @param int $post_id The post ID of the tinypress_link
+	 *
+	 * @return string 'internal' or 'external'
+	 */
+	function get_link_type( $post_id ) {
+		$target_url = Utils::get_meta( 'target_url', $post_id );
+
+		if ( empty( $target_url ) ) {
+			return 'external';
+		}
+
+		// Get the site domain
+		$site_url = get_site_url();
+		$site_host = wp_parse_url( $site_url, PHP_URL_HOST );
+		$target_host = wp_parse_url( $target_url, PHP_URL_HOST );
+
+		// Remove www. prefix for comparison (so www.example.com and example.com are treated the same)
+		$site_host = preg_replace( '/^www\./', '', $site_host );
+		$target_host = preg_replace( '/^www\./', '', $target_host );
+
+		return ( $site_host === $target_host ) ? 'internal' : 'external';
+	}
 
 	/**
 	 * Add columns on Schedules listing
@@ -147,6 +180,7 @@ class TINYPRESS_Column_link {
 			'cb'           => Utils::get_args_option( 'cb', $columns ),
 			'link-title'   => esc_html__( 'Link Title', 'tinypress' ),
 			'short-link'   => esc_html__( 'Shortlink', 'tinypress' ),
+			'link-type'    => esc_html__( 'Link Type', 'tinypress' ),
 			'click-count'  => esc_html__( 'Stats', 'tinypress' ),
 			'link-actions' => esc_html__( 'Actions', 'tinypress' ),
 		);

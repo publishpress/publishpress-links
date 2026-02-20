@@ -344,7 +344,7 @@ table.tinypress_link_page_tinypress-reports th#details {
     padding: 3px 8px;
     font-size: 14px;
     line-height: 24px;
-    width: auto;
+    width: 200px !important;
 }
 
 .tiny-slug-wrap .tiny-slug-preview.preview-mini {
@@ -1035,4 +1035,33 @@ body.tinypress_link_page_tinypress-logs #wpcontent {
 
 body.tinypress_link_page_tinypress-logs #wpwrap {
     display: inline-block;
+}
+
+.tinypress-link-type-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.tinypress-link-type-badge.internal-badge {
+    background-color: var(--tinypress-color-primary-dim);
+    color: var(--tinypress-color-primary);
+    border: 1px solid var(--tinypress-color-primary);
+}
+
+.tinypress-link-type-badge.external-badge {
+    background-color: rgba(244, 67, 54, 0.08);
+    color: var(--tinypress-color-red);
+    border: 1px solid var(--tinypress-color-red);
+}
+
+.column-link-type {
+    padding-left: 50px !important;
+}
+
+.tinypress.tooltip-text{
+    text-align: center !important;
 }
