@@ -341,10 +341,13 @@ table.tinypress_link_page_tinypress-reports th#details {
 }
 
 .tiny-slug-wrap.mini .tiny-slug-preview {
-    padding: 3px 8px;
-    font-size: 14px;
     line-height: 24px;
     width: 200px !important;
+    padding-right: 5px;
+    word-break: break-word;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 
 .tiny-slug-wrap .tiny-slug-preview.preview-mini {
@@ -356,6 +359,11 @@ table.tinypress_link_page_tinypress-reports th#details {
 
 .tiny-slug-wrap .tiny-slug-preview > span {
     float: left;
+}
+
+.tiny-slug-wrap.mini .tiny-slug-preview > span {
+    float: none;
+    display: inline;
 }
 
 .tiny-slug-wrap .tinypress-slug-field {
