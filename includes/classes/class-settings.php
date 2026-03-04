@@ -224,7 +224,7 @@ if ( ! class_exists( 'TINYPRESS_Settings' ) ) {
 								'desc'         => esc_html__( 'Only selected user roles can create or edit links.', 'tinypress' ),
 								'inline'       => true,
 								'options'      => $user_roles,
-								'default'      => array( 'administrator', 'editor', 'author' ),
+								'default'      => array( 'administrator', 'editor' ),
 								'attributes'   => ! defined( 'PUBLISHPRESS_SHORTLINKS_PRO_VERSION' ) ? array( 'disabled' => true ) : array(),
 							),
 							array(
@@ -244,7 +244,7 @@ if ( ! class_exists( 'TINYPRESS_Settings' ) ) {
 								'desc'         => esc_html__( 'Only selected user roles can control settings.', 'tinypress' ),
 								'inline'       => true,
 								'options'      => $user_roles,
-								'default'      => array( 'administrator', 'editor', 'author' ),
+								'default'      => array( 'administrator', 'editor' ),
 								'attributes'   => ! defined( 'PUBLISHPRESS_SHORTLINKS_PRO_VERSION' ) ? array( 'disabled' => true ) : array(),
 							),
 						), $user_roles ),
@@ -357,7 +357,7 @@ if ( ! class_exists( 'TINYPRESS_Settings' ) ) {
 							'title'    => esc_html__( 'Revision Visibility for Visitors', 'tinypress' ),
 							'label'    => esc_html__( 'Allow logged-out visitors to view revision content via shortlinks.', 'tinypress' ),
 							'desc'     => esc_html__( 'By default, PublishPress Revisions blocks visitors from viewing revision previews. When enabled, revision shortlinks will render the revision content directly for logged-out visitors instead of redirecting to the preview URL.', 'tinypress' ),
-							'default'  => false,
+							'default'  => true,
 						),
 					),
 				);

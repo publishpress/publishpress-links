@@ -234,7 +234,7 @@ if ( ! class_exists( 'TINYPRESS_Main' ) ) {
 			new TINYPRESS_Redirection();
 			new TINYPRESS_AutoList();
 			TINYPRESS_Autolist_Ajax::instance();
-			TINYPRESS_Reviews::instance();
+			SHORTLINKS_Reviews::instance();
 			
 			// Initialize metaboxes early for proper registration
 			add_action( 'init', function() {
