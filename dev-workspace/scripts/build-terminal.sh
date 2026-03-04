@@ -6,7 +6,11 @@ if [[ ! $(pwd) =~ .*dev-workspace$ ]]; then
 fi
 
 set -a
-source ./.env
+source ../.env
 set +a
 
-$BIN_PATH/exec "$@"
+echo "Building terminal container..."
+
+docker compose -f docker/compose.yaml build terminal
+
+echo "Terminal container built successfully!"
