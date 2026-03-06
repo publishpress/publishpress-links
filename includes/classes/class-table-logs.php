@@ -193,9 +193,6 @@ class WP_List_Table_Logs extends WP_List_Table {
 					$is_revision_link = $source_post && rvy_in_revision_workflow( $source_post->ID ) ? '1' : '0';
 				}
 			}
-			if ( '1' === $is_revision_link ) {
-				$revision_badge = ' <span class="tinypress-revision-badge">' . esc_html__( 'rev', 'tinypress' ) . '</span>';
-			}
 		}
 
 		return sprintf( '<div class="post-title"><a href="post.php?post=%s&action=edit">%s</a>%s%s</div>',

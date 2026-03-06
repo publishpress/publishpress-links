@@ -119,12 +119,14 @@ if ( ! function_exists( 'tinypress_get_tiny_slug_copier' ) ) {
 
 		echo '<div class="tiny-slug-preview hint--top" aria-label="' . tinypress()::get_text_hint() . '" data-text-copied="' . tinypress()::get_text_copied() . '">';
 
+		echo '<span class="tiny-slug-inner">';
 		if ( $preview ) {
 			echo '<span class="preview"> ' . esc_html__( $preview_text ) . ' </span>';
 		} else {
 			echo '<span class="prefix">' . esc_url( site_url( '/' . $link_prefix_slug . '/' ) ) . '</span>';
 			echo '<span class="tiny-slug"> ' . esc_attr( $tiny_slug ) . ' </span>';
 		}
+		echo '</span>';
 		echo '</div>';
 
 		if ( $display_input_field ) {
