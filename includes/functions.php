@@ -205,6 +205,14 @@ if ( ! function_exists( 'tinypress_create_shorten_url' ) ) {
 			return new WP_Error( 404, esc_html__( 'Target url not found.', 'tinypress' ) );
 		}
 
+		$target_url      = esc_url_raw( $target_url );
+		$allowed_schemes = array( 'http', 'https', 'ftp', 'ftps', 'mailto' );
+		$parsed_scheme   = parse_url( $target_url, PHP_URL_SCHEME );
+	
+		if ( empty( $target_url ) || ! in_array( $parsed_scheme, $allowed_schemes, true ) ) {
+			return new WP_Error( 'invalid_url', esc_html__( 'Invalid URL scheme. Only http, https, ftp, ftps, and mailto are allowed.', 'tinypress' ) );
+		}
+
 		if ( empty( $tiny_slug = Utils::get_args_option( 'tiny_slug', $args, tinypress_create_url_slug() ) ) ) {
 			return new WP_Error( 404, esc_html__( 'Tiny slug could not created.', 'tinypress' ) );
 		}
