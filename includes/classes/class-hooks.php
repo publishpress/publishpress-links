@@ -45,6 +45,11 @@ if ( ! class_exists( 'TINYPRESS_Hooks' ) ) {
 
 		public function tinypress_popup_create_url() {
 
+			if ( ! isset( $_POST['tinypress_create_nonce'] ) ||
+				! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['tinypress_create_nonce'] ) ), 'tinypress_popup_create_url' ) ) {
+				wp_send_json_error( array( 'message' => esc_html__( 'Security check failed.', 'tinypress' ) ) );
+			}
+		
 			if ( ! self::current_user_can_create() ) {
 				wp_send_json_error( array( 'message' => esc_html__( 'You do not have permission to create shortlinks.', 'tinypress' ) ) );
 			}
