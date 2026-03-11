@@ -34,3 +34,5 @@ dev-workspace/.cache
 .env
 .phplint-cache
 /metrics
+/security-audit
+.vscode
