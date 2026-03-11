@@ -1,19 +1,19 @@
 ---
-name: wp-plugin-security-auditor
-description: WordPress plugin security and code quality audit for acquisition evaluation
+name: wp-plugin-improvement-auditor
+description: WordPress plugin security and code quality audit for improvement planning
 ---
 
 # WP Plugin Security & Code Quality Auditor
 
-Use these instructions when the user requests a security audit, code quality review, or acquisition evaluation of a WordPress plugin. This skill is configured for **PublishPress Shortlinks** (`tinypress.php`), a link shortening, tracking, branding, and affiliate link management plugin. It generates both detailed security findings (GHSA format) and spreadsheet-compatible metrics for acquisition decisions.
+Use these instructions when the user requests a security audit, code quality review, or improvement assessment of a WordPress plugin. This skill is configured for **PublishPress Shortlinks** (`tinypress.php`), a link shortening, tracking, branding, and affiliate link management plugin. It generates both detailed security findings (GHSA format) and spreadsheet-compatible metrics for planning improvement priorities.
 
 ## Mission
 
-Conduct a comprehensive technical due diligence audit covering security, code quality, and maintainability. Generate both:
-1. **Spreadsheet metrics** - Tab-separated data for Plugin Acquisition Evaluation Spreadsheet
+Conduct a comprehensive technical audit covering security, code quality, and maintainability. The goal is to identify the current state of the codebase and produce a prioritized improvement roadmap. Generate both:
+1. **Spreadsheet metrics** - Tab-separated data for Plugin Improvement Tracking Spreadsheet
 2. **Security advisories** - Detailed vulnerability reports in GHSA format (when issues found)
 
-The output is formatted for direct paste into evaluation spreadsheets with scores aligned to acquisition decision criteria.
+The output is formatted for direct paste into tracking spreadsheets with scores aligned to improvement planning criteria.
 
 ## Directories to Exclude
 
@@ -204,20 +204,22 @@ phpmetrics --report-html=metrics --exclude=vendor,lib/vendor,tests,dist,dev-work
 - Average Cyclomatic Complexity
 - Average Bugs by Class
 
-### Phase 6: Fix Cost Estimation
+### Phase 6: Improvement Roadmap
 
-**Estimate developer days needed (1-10+):**
-- **1-3 days:** Minor fixes (small bugs, simple updates, documentation)
-- **4-6 days:** Moderate work (security patches, dependency updates, refactoring small modules)
-- **7-9 days:** Major overhaul (significant refactoring, multiple security issues, architectural changes)
-- **10+ days:** Critical rebuild (fundamental architecture changes, complete rewrite needed)
+**Categorize all findings into improvement tiers:**
+- **P1 — Fix Now (security or stability blockers):** Issues that pose a direct security risk or cause instability. Must be addressed immediately regardless of effort.
+- **P2 — Short-Term (1-4 weeks):** High-impact improvements to security, code quality, or maintainability that are well-scoped and feasible in a sprint.
+- **P3 — Medium-Term (1-3 months):** Architectural or refactoring work that improves maintainability, reduces technical debt, or hardens the codebase. Requires planning.
+- **P4 — Long-Term / Ongoing:** Improvements that are valuable but lower urgency — documentation, test coverage, coding standards alignment, dependency upgrades.
 
-## Recommendation Logic
 
-**Apply these decision rules:**
-- **ACQUIRE:** Security ≥4.0 AND Code Quality ≥3.5 AND Fix Days ≤6
-- **CAUTION:** Security 2.5-3.9 OR Code Quality 2.5-3.4 OR Fix Days 7-9
-- **REJECT:** Security <2.5 OR Code Quality <2.5 OR Fix Days ≥10
+## Improvement Priority Logic
+
+**Use these thresholds to guide improvement tier assignment:**
+- **P1 (Fix Now):** Any CRITICAL or HIGH security finding; any bug causing incorrect behavior
+- **P2 (Short-Term):** Security score <3.5; any MEDIUM security finding; maintainability issues blocking new feature work
+- **P3 (Medium-Term):** Code Quality score <3.5; architectural anti-patterns; missing test coverage
+- **P4 (Long-Term):** Documentation gaps; coding standards compliance; minor refactoring opportunities
 
 ## Output Format
 
@@ -246,15 +248,14 @@ Lines of Code	[X]	[From phpmetrics report]
 Classes	[X]	[From phpmetrics report]
 Avg Cyclomatic Complexity	[X.X]	[From phpmetrics report]
 Avg Bugs by Class	[X.X]	[From phpmetrics report]
-Fix Cost (Days)	[X]	[Brief: What needs fixing, max 2 sentences]
-Recommendation	[ACQUIRE/CAUTION/REJECT]	[One-line rationale based on decision rules]
+Overall Health	[HEALTHY/NEEDS WORK/AT RISK]	[One-line rationale based on scores]
 ```
 
 **Example of properly formatted data:**
 ```
 Metric	Score/Value	Notes
 Security Score	4.2	Minor CSRF issues in admin forms. No critical vulnerabilities found.
-Architecture & Design	3.8	Generally well-structured MVC pattern. Some tight coupling in payment modules.
+Architecture & Design	3.8	Generally well-structured MVC pattern. Some tight coupling in admin module.
 Code Maintainability	3.5	Readable code with consistent naming. Large god classes need refactoring.
 Documentation	2.8	Basic PHPDoc present. Missing inline comments in complex logic sections.
 Code Quality Score	3.4	Average of Architecture (3.8), Maintainability (3.5), and Documentation (2.8).
@@ -263,8 +264,7 @@ Lines of Code	15420	Reasonable size for plugin functionality. Well-distributed a
 Classes	87	Good separation of concerns. Some classes could be further decomposed.
 Avg Cyclomatic Complexity	5.2	Acceptable complexity. Few methods exceed threshold of 10.
 Avg Bugs by Class	0.8	Low predicted bug count. Indicates stable codebase with good practices.
-Fix Cost (Days)	5	CSRF protection (2 days), refactor payment module (2 days), documentation (1 day).
-Recommendation	CAUTION	Code Quality 3.4 is below ideal but acceptable. Security is solid at 4.2.
+Overall Health	NEEDS WORK	Security is solid but Code Quality 3.4 needs targeted refactoring.
 ```
 
 ## 1. Security Assessment (Brief)
@@ -295,29 +295,39 @@ Recommendation	CAUTION	Code Quality 3.4 is below ideal but acceptable. Security 
 - Large functions: [Notable examples >100 lines]
 
 ## 3. Dependencies
-**Critical Issues:** [List outdated/risky packages]
-**Immediate Updates Required:** [What needs updating]
+**Outdated/At-Risk Packages:** [List packages needing updates]
+**Immediate Updates Required:** [What needs updating and why]
 **PHP Version:** [Current requirement]
 **WordPress Version:** [Current requirement]
 
-## 4. Fix Cost Breakdown
-**Estimated: X days**
+## 4. Improvement Roadmap
 
-Priority fixes:
-1. [Issue] - [X days] - [Brief description]
-2. [Issue] - [X days] - [Brief description]
-3. [Issue] - [X days] - [Brief description]
+### P1 — Fix Now (Security/Stability Blockers)
+1. [Issue] - [Brief description and impact]
+2. [Issue] - [Brief description and impact]
 
-## 5. Final Recommendation: [ACQUIRE/CAUTION/REJECT]
+### P2 — Short-Term (1-4 Weeks)
+1. [Issue] - [Brief description and impact]
+2. [Issue] - [Brief description and impact]
 
-**Rationale:** [2-3 sentence justification based on decision rules]
+### P3 — Medium-Term (1-3 Months)
+1. [Issue] - [Brief description and impact]
+2. [Issue] - [Brief description and impact]
 
-**Key Decision Factors:**
-- [Brief factor 1]
-- [Brief factor 2]
-- [Brief factor 3]
+### P4 — Long-Term / Ongoing
+1. [Issue] - [Brief description]
+2. [Issue] - [Brief description]
 
-**Answer:** Is this code maintainable by a new team? [Yes/No with brief explanation]
+## 5. Overall Health: [HEALTHY/NEEDS WORK/AT RISK]
+
+**Summary:** [2-3 sentence assessment of current state and improvement direction]
+
+**Top 3 Priorities:**
+- [Priority 1 with brief rationale]
+- [Priority 2 with brief rationale]
+- [Priority 3 with brief rationale]
+
+**Answer:** Can a new developer onboard and safely contribute to this codebase? [Yes/Partially/No with brief explanation]
 ```
 
 ### Output 2: Individual Security Advisories (GHSA Format)
@@ -407,8 +417,8 @@ Each security advisory file must contain:
 6. ✅ Code path to vulnerability is reachable by users
 7. ✅ WordPress core sanitization doesn't already prevent exploitation
 8. ✅ CVSS scores accurately reflect impact
-9. ✅ Fix cost estimates are realistic based on complexity
-10. ✅ Recommendation follows decision rules strictly
+9. ✅ Improvement tier assignments (P1–P4) accurately reflect priority and impact
+10. ✅ Overall Health classification follows the improvement priority logic
 
 ### False Positive Avoidance
 - Check if data is sanitized before the vulnerable function
@@ -421,7 +431,8 @@ Each security advisory file must contain:
 - Be objective and concise: 1-2 sentences max in spreadsheet Notes column
 - Provide code snippets as evidence with file:line references
 - Brief descriptions in main report, detailed in individual GHSA files
-- Answer the key question: "Is this code maintainable by a new team?"
+- Frame every finding with its improvement impact: "Fixing this will allow..."
+- Answer the key question: "Can a new developer safely contribute to this codebase?"
 
 ## Execution Workflow
 
@@ -456,15 +467,16 @@ Follow this sequence for comprehensive audit:
    - Documentation: 0-5.0
    - Code Quality: (Architecture + Maintainability + Documentation) ÷ 3
 
-5. **Estimate fix cost** (1-10+ days)
+5. **Build improvement roadmap:**
+   - Assign each finding to P1/P2/P3/P4 tier
 
-6. **Apply recommendation logic:**
-   - ACQUIRE: Security ≥4.0 AND Code Quality ≥3.5 AND Fix Days ≤6
-   - CAUTION: Security 2.5-3.9 OR Code Quality 2.5-3.4 OR Fix Days 7-9
-   - REJECT: Security <2.5 OR Code Quality <2.5 OR Fix Days ≥10
+6. **Apply overall health classification:**
+   - HEALTHY: Security ≥4.0 AND Code Quality ≥3.5 AND no P1 items
+   - NEEDS WORK: Security 2.5-3.9 OR Code Quality 2.5-3.4 OR any P1 items present
+   - AT RISK: Security <2.5 OR Code Quality <2.5 OR multiple critical P1 items
 
 7. **Generate outputs:**
-   - Create AUDIT_REPORT.md with spreadsheet data
+   - Create AUDIT_REPORT.md with spreadsheet data and improvement roadmap
    - Create individual GHSA files for each vulnerability (if any)
 
 ## Interaction Protocol
@@ -472,8 +484,8 @@ Follow this sequence for comprehensive audit:
 - Request additional files if needed to trace data flow
 - Explain severity reasoning if unclear
 - Highlight systemic issues when patterns emerge
-- Provide actionable remediation, not just problem identification
+- Provide actionable remediation with concrete code examples, not just problem identification
+- Frame improvements positively: describe the benefit of fixing, not just the problem
 - When uncertain about exploitability, report with caveats
 - If PHPMetrics fails to run, estimate metrics from manual analysis
 - Always complete the full audit workflow before generating final report
-
