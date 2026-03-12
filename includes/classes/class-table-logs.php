@@ -94,6 +94,7 @@ class WP_List_Table_Logs extends WP_List_Table {
 
 		global $wpdb;
 
+		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- TINYPRESS_TABLE_REPORTS is a constant, no user input
 		$all_posts = $wpdb->get_results( "SELECT id,post_id,user_id,user_ip,user_location, datetime FROM " . TINYPRESS_TABLE_REPORTS . " WHERE is_cleared = 0 ORDER BY datetime DESC", ARRAY_A );
 		$all_posts = array_map( function ( $post ) {
 
