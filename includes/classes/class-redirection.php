@@ -315,12 +315,15 @@ if ( ! class_exists( 'TINYPRESS_Redirection' ) ) {
 			);
 
 			// Try to get geolocation data, but don't fail if it's unavailable
-			$get_user_data = @file_get_contents( 'http://www.geoplugin.net/json.gp?ip=' . $get_ip_address );
+			$response = wp_remote_get( 'https://www.geoplugin.net/json.gp?ip=' . urlencode( $get_ip_address ) );
 
-			if ( $get_user_data ) {
-				$user_data     = json_decode( $get_user_data, true );
-				$location_keys = array_keys( $location_info );
-				$location_info = array_merge( $location_info, array_intersect_key( $user_data, array_flip( $location_keys ) ) );
+			if ( ! is_wp_error( $response ) && 200 === wp_remote_retrieve_response_code( $response ) ) {
+				$get_user_data = wp_remote_retrieve_body( $response );
+				if ( $get_user_data ) {
+					$user_data     = json_decode( $get_user_data, true );
+					$location_keys = array_keys( $location_info );
+					$location_info = array_merge( $location_info, array_intersect_key( $user_data, array_flip( $location_keys ) ) );
+				}
 			}
 
 			$wpdb->insert( TINYPRESS_TABLE_REPORTS,
