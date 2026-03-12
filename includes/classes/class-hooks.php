@@ -45,18 +45,19 @@ if ( ! class_exists( 'TINYPRESS_Hooks' ) ) {
 
 		public function tinypress_popup_create_url() {
 
-			if ( ! isset( $_POST['tinypress_create_nonce'] ) ||
-				! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['tinypress_create_nonce'] ) ), 'tinypress_popup_create_url' ) ) {
+			$_url_data = isset( $_POST['url_data'] ) ? wp_unslash( $_POST['url_data'] ) : null;
+
+			parse_str( $_url_data, $url_data );
+
+			$nonce = isset( $url_data['tinypress_create_nonce'] ) ? sanitize_text_field( $url_data['tinypress_create_nonce'] ) : '';
+
+			if ( empty( $nonce ) || ! wp_verify_nonce( $nonce, 'tinypress_popup_create_url' ) ) {
 				wp_send_json_error( array( 'message' => esc_html__( 'Security check failed.', 'tinypress' ) ) );
 			}
 		
 			if ( ! self::current_user_can_create() ) {
 				wp_send_json_error( array( 'message' => esc_html__( 'You do not have permission to create shortlinks.', 'tinypress' ) ) );
 			}
-
-			$_url_data = isset( $_POST['url_data'] ) ? wp_unslash( $_POST['url_data'] ) : null;
-
-			parse_str( $_url_data, $url_data );
 
 			$long_url  = Utils::get_args_option( 'long_url', $url_data );
 			$tiny_slug = Utils::get_args_option( 'tiny_slug', $url_data, tinypress_create_url_slug() );
