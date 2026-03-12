@@ -136,6 +136,14 @@ if ( ! class_exists( 'TINYPRESS_Main' ) ) {
 		 */
 		function create_data_table() {
 
+			global $wpdb;
+			$table_name = TINYPRESS_TABLE_REPORTS;
+
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+			if ( $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $table_name ) ) === $table_name ) {
+				return;
+			}
+
 			if ( ! function_exists( 'dbDelta' ) ) {
 				require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 			}
