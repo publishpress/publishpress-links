@@ -136,7 +136,7 @@ if ( ! class_exists( 'TINYPRESS_Main' ) ) {
 		 */
 		function create_data_table() {
 
-			if ( ! function_exists( 'maybe_create_table' ) ) {
+			if ( ! function_exists( 'dbDelta' ) ) {
 				require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 			}
 
@@ -151,15 +151,8 @@ if ( ! class_exists( 'TINYPRESS_Main' ) ) {
             PRIMARY KEY (id)
         );";
 
-		maybe_create_table( TINYPRESS_TABLE_REPORTS, $sql_create_table );
-
-		global $wpdb;
-		$table_name = TINYPRESS_TABLE_REPORTS;
-		$column_exists = $wpdb->get_results( "SHOW COLUMNS FROM `{$table_name}` LIKE 'is_cleared'" );
-
-		if ( empty( $column_exists ) ) {
-			$wpdb->query( "ALTER TABLE `{$table_name}` ADD COLUMN is_cleared TINYINT(1) NOT NULL DEFAULT 0" );
-		}
+		// Use dbDelta for both table creation and schema updates
+		dbDelta( $sql_create_table );
 	}
 		function set_default_settings() {
 			$settings = get_option( 'tinypress_settings', array() );
