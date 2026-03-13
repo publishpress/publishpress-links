@@ -315,12 +315,15 @@ if ( ! class_exists( 'TINYPRESS_Redirection' ) ) {
 			);
 
 			// Try to get geolocation data, but don't fail if it's unavailable
-			$get_user_data = @file_get_contents( 'http://www.geoplugin.net/json.gp?ip=' . $get_ip_address );
+			$response = wp_remote_get( 'https://www.geoplugin.net/json.gp?ip=' . urlencode( $get_ip_address ) );
 
-			if ( $get_user_data ) {
-				$user_data     = json_decode( $get_user_data, true );
-				$location_keys = array_keys( $location_info );
-				$location_info = array_merge( $location_info, array_intersect_key( $user_data, array_flip( $location_keys ) ) );
+			if ( ! is_wp_error( $response ) && 200 === wp_remote_retrieve_response_code( $response ) ) {
+				$get_user_data = wp_remote_retrieve_body( $response );
+				if ( $get_user_data ) {
+					$user_data     = json_decode( $get_user_data, true );
+					$location_keys = array_keys( $location_info );
+					$location_info = array_merge( $location_info, array_intersect_key( $user_data, array_flip( $location_keys ) ) );
+				}
 			}
 
 			$wpdb->insert( TINYPRESS_TABLE_REPORTS,
@@ -367,13 +370,24 @@ if ( ! class_exists( 'TINYPRESS_Redirection' ) ) {
 
 				// Check if the link is expired or not
 				if ( ! empty( $expiration_date ) ) {
-					$expiration_date = $expiration_date . ' 23:59:59';
+					$expiration_time = Utils::get_meta( 'expiration_time', $link_id );
 
-					if ( current_time( 'd-m-Y G:i:s' ) > $expiration_date ) {
+					if ( ! empty( $expiration_time ) ) {
+						$expiration_timestamp = DateTime::createFromFormat( 'd-m-Y g:i A', $expiration_date . ' ' . $expiration_time );
+					} elseif ( strpos( $expiration_date, ' ' ) !== false ) {
+						$expiration_timestamp = DateTime::createFromFormat( 'd-m-Y H:i', $expiration_date );
+					} else {
+						$expiration_timestamp = DateTime::createFromFormat( 'd-m-Y H:i:s', $expiration_date . ' 23:59:59' );
+					}
+
+					$now = new DateTime( current_time( 'Y-m-d H:i:s' ) );
+
+					if ( $expiration_timestamp && $now > $expiration_timestamp ) {
 						$expired_redirect_url = apply_filters( 'tinypress_link_expired_redirect', '', $link_id );
 
 						if ( ! empty( $expired_redirect_url ) ) {
-							$show_notice = Utils::get_option( 'tinypress_expired_show_notice', false );
+							$per_link_notice = Utils::get_meta( 'expired_show_notice', $link_id );
+							$show_notice = ! empty( $per_link_notice ) ? $per_link_notice : Utils::get_option( 'tinypress_expired_show_notice', false );
 
 							if ( $show_notice ) {
 								$this->display_expired_notice_page( $expired_redirect_url );
@@ -390,26 +404,54 @@ if ( ! class_exists( 'TINYPRESS_Redirection' ) ) {
 				}
 			}
 
-			// Check the password protection for this link
+			// If password protection is not enabled, redirect directly
 			if ( '1' != $password_protection ) {
 				$this->redirect_url( $link_id );
 			}
 
-			?>
-            <script>
-                if ('<?php echo esc_attr( $link_password ); ?>' === prompt("Password:")) {
-                    window.location.href = '<?php echo esc_url( $password_checked_url ); ?>';
-                } else {
-                    window.location.href = '<?php echo esc_url( $current_url ); ?>';
-                }
-            </script>
-			<?php
-
-			$password_nonce = isset( $_GET['password'] ) ? sanitize_text_field( $_GET['password'] ) : '';
-
-			if ( wp_verify_nonce( $password_nonce, 'password_check' ) ) {
-				$this->redirect_url( $link_id );
+			// Password protection is enabled — check if password was submitted
+			$error_message = '';
+			if ( isset( $_POST['tinypress_password'] ) && isset( $_POST['tinypress_pw_nonce'] ) ) {
+				$submitted_nonce = sanitize_text_field( wp_unslash( $_POST['tinypress_pw_nonce'] ) );
+				$submitted_password = sanitize_text_field( wp_unslash( $_POST['tinypress_password'] ) );
+				
+				if ( wp_verify_nonce( $submitted_nonce, 'tinypress_password_check_' . $link_id ) && $submitted_password === $link_password ) {
+					$this->redirect_url( $link_id );
+				} else {
+					$error_message = esc_html__( 'Incorrect password. Please try again.', 'tinypress' );
+				}
 			}
+
+			// Show password form
+			status_header( 200 );
+			$form_nonce = wp_create_nonce( 'tinypress_password_check_' . $link_id );
+			$css_url = plugin_dir_url( TINYPRESS_FILE ) . 'assets/admin/css/style.css';
+			?>
+			<!DOCTYPE html>
+			<html <?php language_attributes(); ?>>
+			<head>
+				<meta charset="<?php bloginfo( 'charset' ); ?>">
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<meta name="robots" content="noindex, nofollow">
+				<title><?php esc_html_e( 'Password Protected Link', 'tinypress' ); ?></title>
+				<link rel="stylesheet" href="<?php echo esc_url( $css_url ); ?>">
+			</head>
+			<body class="tinypress-password-page">
+				<div class="tinypress-password-form">
+					<h2><?php esc_html_e( 'Password Protected Link', 'tinypress' ); ?></h2>
+					<?php if ( ! empty( $error_message ) ) : ?>
+						<div class="tinypress-password-error"><?php echo esc_html( $error_message ); ?></div>
+					<?php endif; ?>
+					<form method="post" action="">
+						<input type="hidden" name="tinypress_pw_nonce" value="<?php echo esc_attr( $form_nonce ); ?>">
+						<label for="tinypress_password"><?php esc_html_e( 'Enter password to continue:', 'tinypress' ); ?></label>
+						<input type="password" name="tinypress_password" id="tinypress_password" required autofocus>
+						<button type="submit"><?php esc_html_e( 'Submit', 'tinypress' ); ?></button>
+					</form>
+				</div>
+			</body>
+			</html>
+			<?php
 
 			die();
 		}
