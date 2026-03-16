@@ -21,7 +21,11 @@ if ( ! class_exists( 'TINYPRESS_Redirection' ) ) {
 		 * TINYPRESS_Redirection constructor.
 		 */
 		function __construct() {
-			add_action( 'template_redirect', array( $this, 'redirection_controller' ) );
+			// RankMath compatibility
+			add_filter( 'rank_math/redirection/fallback_exclude_locations', array( $this, 'rankmath_exclude_shortlinks' ), 10, 1 );
+			add_filter( 'wp_title', array( $this, 'fix_shortlink_title' ), 10, 2 );
+			// Main redirection controller
+			add_action( 'template_redirect', array( $this, 'redirection_controller' ), 0 );
 			add_action( 'pre_get_posts', array( $this, 'tinypress_filter_shortlink_preview_visibility' ) );
 			add_action( 'wp_footer', array( $this, 'inject_reload_detection' ) );
 		}
@@ -585,6 +589,77 @@ if ( ! class_exists( 'TINYPRESS_Redirection' ) ) {
 			}
 
 			return str_replace( site_url(), '', $current_url );
+		}
+
+		/**
+		 * Check if the current request is a valid TinyPress shortlink.
+		 * This is used to tell RankMath to skip processing our shortlinks.
+		 *
+		 * @param string $uri The URI to check
+		 * @return bool True if this is a valid shortlink
+		 */
+		public function is_shortlink_request( $uri = '' ) {
+			if ( empty( $uri ) ) {
+				$uri = trim( $this->get_request_uri(), '/' );
+			}
+
+			$link_prefix      = Utils::get_option( 'tinypress_link_prefix' );
+			$link_prefix_slug = Utils::get_option( 'tinypress_link_prefix_slug', 'go' );
+
+			// Extract the slug from the URI
+			if ( '1' == $link_prefix ) {
+				if ( strpos( $uri, $link_prefix_slug ) !== 0 && strpos( $uri, $link_prefix_slug . '/' ) !== 0 ) {
+					return false;
+				}
+				$tiny_slug = str_replace( $link_prefix_slug . '/', '', $uri );
+			} else {
+				$tiny_slug = $uri;
+			}
+
+			$tiny_slug_parts = explode( '?', $tiny_slug );
+			$tiny_slug = $tiny_slug_parts[0] ?? '';
+
+			$link_id = tinypress()->tiny_slug_to_post_id( $tiny_slug );
+
+			return ! empty( $link_id ) && $link_id !== 0;
+		}
+
+		/**
+		 * RankMath compatibility: Add current shortlink to RankMath's fallback exclusion list.
+		 * This prevents RankMath from redirecting valid shortlinks to homepage.
+		 *
+		 * @param array $exclude_locations Array of locations to exclude from fallback redirect
+		 * @return array Modified exclusion list
+		 */
+		public function rankmath_exclude_shortlinks( $exclude_locations ) {
+			$uri = trim( $this->get_request_uri(), '/' );
+
+			if ( $this->is_shortlink_request( $uri ) ) {
+				$exclude_locations[] = $uri;
+			}
+
+			return $exclude_locations;
+		}
+
+		/**
+		 * Fix page title for valid shortlinks to prevent "Page not found" from showing.
+		 *
+		 * @param string $title The page title
+		 * @param string $sep The separator
+		 * @return string Modified title
+		 */
+		public function fix_shortlink_title( $title, $sep = '' ) {
+			if ( ! is_404() ) {
+				return $title;
+			}
+
+			$uri = trim( $this->get_request_uri(), '/' );
+
+			if ( $this->is_shortlink_request( $uri ) ) {
+				return get_bloginfo( 'name' );
+			}
+
+			return $title;
 		}
 
 		/**

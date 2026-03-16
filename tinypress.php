@@ -3,7 +3,7 @@
  * Plugin Name: PublishPress Shortlinks
  * Plugin URI:  https://publishpress.com/shortlinks/
  * Description: Create custom links for your posts. These links are brandable, trackable, and can have custom view permissions.
- * Version: 1.4.0
+ * Version: 1.3.0
  * Text Domain: tinypress
  * Author: PublishPress
  * Author URI: https://publishpress.com/
@@ -30,11 +30,38 @@ if ( class_exists( 'PublishPressInstanceProtection\\Config' ) ) {
 	$pluginChecker = new PublishPressInstanceProtection\InstanceChecker( $pluginCheckerConfig );
 }
 
+// Conflict detection with old plugin version
+// TODO: This is only for compatibility with transiting from >=1.3.0, so let's remove this in any version after 1.4.0. 
+// PublishPressInstanceProtection should handle situations like this for us
+$old_tinypress_active = false;
+foreach ( (array) get_option( 'active_plugins' ) as $plugin_file ) {
+	if ( false !== strpos( $plugin_file, 'tinypress/tinypress.php' ) ) {
+		$old_tinypress_active = true;
+		break;
+	}
+}
+
+if ( ! $old_tinypress_active && is_multisite() ) {
+	foreach ( array_keys( (array) get_site_option( 'active_sitewide_plugins' ) ) as $plugin_file ) {
+		if ( false !== strpos( $plugin_file, 'tinypress/tinypress.php' ) ) {
+			$old_tinypress_active = true;
+			break;
+		}
+	}
+}
+
+if ( $old_tinypress_active ) {
+	add_action( 'admin_notices', function() {
+		echo '<div class="notice notice-error is-dismissible"><p><strong>PublishPress Shortlinks Error:</strong> Both old and new versions are active. Please deactivate and delete the old "tinypress" plugin folder, then reactivate PublishPress Shortlinks.</p></div>';
+	});
+	return;
+}
+
 if ( ! defined( 'TINYPRESS_LOADED' ) ) {
 	define( 'TINYPRESS_LOADED', 1 );
 
 	define( 'TINYPRESS_FILE', __DIR__ . '/tinypress.php' );
-	define( 'TINYPRESS_PLUGIN_VERSION', '1.4.0' );
+	define( 'TINYPRESS_PLUGIN_VERSION', '1.3.0' );
 
 	if ( ! defined( 'TINYPRESS_LIB_VENDOR_PATH' ) ) {
 		define( 'TINYPRESS_LIB_VENDOR_PATH', __DIR__ . '/lib/vendor' );
@@ -138,9 +165,13 @@ if ( ! class_exists( 'TINYPRESS_Main' ) ) {
 
 			global $wpdb;
 			$table_name = TINYPRESS_TABLE_REPORTS;
+			
+			$db_version = get_option( 'tinypress_db_version', '0' );
 
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-			if ( $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $table_name ) ) ) === $table_name ) {
+			$table_exists = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $table_name ) ) ) === $table_name;
+			
+			if ( $table_exists && version_compare( $db_version, TINYPRESS_PLUGIN_VERSION, '>=' ) ) {
 				return;
 			}
 
@@ -161,6 +192,9 @@ if ( ! class_exists( 'TINYPRESS_Main' ) ) {
 
 		// Use dbDelta for both table creation and schema updates
 		dbDelta( $sql_create_table );
+		
+		// Update the database version
+		update_option( 'tinypress_db_version', TINYPRESS_PLUGIN_VERSION );
 	}
 		function set_default_settings() {
 			$settings = get_option( 'tinypress_settings', array() );
