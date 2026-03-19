@@ -235,5 +235,4 @@ class ShortlinksCoreAdmin
         </div>
         <?php
     }
-
 }
