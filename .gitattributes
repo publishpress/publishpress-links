@@ -30,7 +30,6 @@ legacy-tests export-ignore
 node_modules export-ignore
 package-lock.json export-ignore
 package.json export-ignore
-phpcs.xml export-ignore
 phpmd-ruleset.xml export-ignore
 psalm.xml export-ignore
 ray-dist.php export-ignore
@@ -39,3 +38,8 @@ screenshot-*.png export-ignore
 tests export-ignore
 webpack.config.js export-ignore
 /assets_wp export-ignore
+.wordpress-org export-ignore
+dev-workspace export-ignore
+.distignore export-ignore
+.phpcs-php-compatibility.xml export-ignore
+.phplint.yml export-ignore
