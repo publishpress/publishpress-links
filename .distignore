@@ -33,5 +33,4 @@ composer.json
 composer.lock
 README.md
 CONTRIBUTING.md
-phpcs.xml
 phpmd-ruleset.xml

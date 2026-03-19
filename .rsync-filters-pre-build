@@ -47,8 +47,6 @@
 - gh_token.txt
 - .env
 - .env.example
-- phpcs.xml.dist
 - .cursor
 - metrics
-- phpcs.xml
 - phpmd-ruleset.xml
