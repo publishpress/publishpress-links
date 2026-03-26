@@ -30,6 +30,7 @@ if (! class_exists('TINYPRESS_Settings')) {
             add_filter('pb_settings_tinypress_settings_save', array( $this, 'sanitize_autolist_settings' ), 10, 2);
             add_action('pb_settings_options_before', array( $this, 'add_settings_wrapper_start' ));
             add_action('pb_settings_options_after', array( $this, 'add_settings_wrapper_end' ));
+            add_action('admin_notices', array( $this, 'shortlinks_elementor_prefix_notice' ));
         }
 
         /**
@@ -124,6 +125,68 @@ if (! class_exists('TINYPRESS_Settings')) {
         }
 
         /**
+         * Check if Elementor is active
+         *
+         * @return bool
+         */
+        private function is_elementor_active()
+        {
+            return defined('ELEMENTOR_VERSION');
+        }
+
+        /**
+         * Get field description for prefix setting (includes warning if Elementor is active)
+         *
+         * @return string
+         */
+        public function get_prefix_field_description()
+        {
+
+            if ($this->is_elementor_active()) {
+                $elementor_notice = sprintf(
+                    '<div style="background-color: #fff3cd; border-left: 4px solid #ffc107; padding: 8px 12px; margin-top: 8px; border-radius: 3px;">
+                        <strong>%s</strong> %s
+                    </div>',
+                    esc_html__('Elementor Detected:', 'tinypress'),
+                    esc_html__('Shortlink prefix is required for proper rendering of Elementor revisions. It is advisable to keep it enabled.', 'tinypress')
+                );
+                return $elementor_notice;
+            }
+
+            return '';
+        }
+
+        /**
+         * Display admin notice if Elementor is active and user tries to disable prefix
+         *
+         * @return void
+         */
+        public function shortlinks_elementor_prefix_notice()
+        {
+            if (!is_admin() || empty($_GET['page']) || 'tinypress-settings' !== $_GET['page']) {
+                return;
+            }
+
+            if (!$this->is_elementor_active()) {
+                return;
+            }
+
+            $prefix_enabled = Utils::get_option('tinypress_link_prefix');
+            if ('1' === $prefix_enabled) {
+                return;
+            }
+
+            ?>
+            <div class="notice notice-warning is-dismissible">
+                <p>
+                    <strong><?php esc_html_e('TinyPress Shortlinks Notice:', 'tinypress'); ?></strong>
+                    <?php esc_html_e('Elementor is active. Shortlink prefix has been automatically disabled, it is required for optimal compatibility with Elementor revisions.', 'tinypress'); ?>
+                </p>
+            </div>
+            <?php
+        }
+
+        /**
          * Get all public post types for auto-list settings
          *
          * @return array
@@ -188,6 +251,7 @@ if (! class_exists('TINYPRESS_Settings')) {
                                 'title'    => esc_html__('Shortlink Prefix', 'tinypress'),
                                 'label'    => esc_html__('Add a prefix between your domain name and shortlink.', 'tinypress'),
                                 'default'  => true,
+                                'desc'     => $this->get_prefix_field_description(),
                             ),
                             array(
                                 'id'          => 'tinypress_link_prefix_slug',

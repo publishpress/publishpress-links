@@ -287,8 +287,10 @@ if (! class_exists('TINYPRESS_Autolist_Ajax')) {
                     'confirmDelete' => __('Are you sure you want to remove this post type?', 'tinypress'),
                     'selectPostType' => __('Select a post type', 'tinypress'),
                     'never' => __('Never', 'tinypress'),
-                    'onFirstUse' => __('On First Use', 'tinypress'),
-                    'onPublish' => __('On Publish', 'tinypress')
+                    'onFirstUse' => __('When Link is First Used', 'tinypress'),
+                    'onPublish' => __('When Post is Published', 'tinypress'),
+                    'onCreate' => __('When Post is Created', 'tinypress'),
+                    'onFirstUseOrOnCreate' => __('When Link is First Used or Post Created', 'tinypress')
                 )
             ));
         }
