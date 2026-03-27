@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name: PublishPress Shortlinks
+ * Plugin Name: PublishPress Shortlinks Free
  * Plugin URI:  https://publishpress.com/shortlinks/
  * Description: Create custom links for your posts. These links are brandable, trackable, and can have custom view permissions.
  * Version: 1.4.0
