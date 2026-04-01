@@ -97,7 +97,7 @@
         });
 
         try {
-            localStorage.setItem('tinypress_analytics_filter', filterName);
+            localStorage.setItem('tinypress_analytics_filter_' + tinypressAnalytics.postId, filterName);
         } catch (e) {}
     };
 
@@ -106,7 +106,7 @@
     // Restore saved filter or default to Last 1 Month
     let savedFilter = 'last_1_month';
     try {
-        let stored = localStorage.getItem('tinypress_analytics_filter');
+        let stored = localStorage.getItem('tinypress_analytics_filter_' + tinypressAnalytics.postId);
         if (stored) {
             savedFilter = stored;
         }
