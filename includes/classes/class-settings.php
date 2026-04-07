@@ -107,7 +107,7 @@ if (! class_exists('TINYPRESS_Settings')) {
                 'database'        => 'option',
                 'theme'           => 'light',
                 'show_search'     => false,
-                'pro_url'         => TINYPRESS_LINK_PRO,
+                'pro_url'         => TINYPRESS_LINK_PRO_MENU,
             );
 
             WPDK_Settings::createSettingsPage($tinypress_wpdk->plugin_unique_id, $settings_args, $this->get_settings_pages());
@@ -120,7 +120,9 @@ if (! class_exists('TINYPRESS_Settings')) {
 
         public function add_settings_wrapper_end()
         {
-            include TINYPRESS_PLUGIN_DIR . 'templates/admin/settings/supports.php';
+            if (! class_exists('PublishPress_Shortlinks_Pro_Init')) {
+                include TINYPRESS_PLUGIN_DIR . 'templates/admin/settings/supports.php';
+            }
             echo '</div>';
         }
 
@@ -305,7 +307,7 @@ if (! class_exists('TINYPRESS_Settings')) {
                                 'inline'       => true,
                                 'options'      => $user_roles,
                                 'default'      => array( 'administrator', 'editor' ),
-                                'attributes'   => ! defined('PUBLISHPRESS_SHORTLINKS_PRO_VERSION') ? array( 'disabled' => true ) : array(),
+                                'attributes'   => array( 'disabled' => true ),
                             ),
                             array(
                                 'id'           => 'tinypress_role_analytics',
@@ -315,7 +317,7 @@ if (! class_exists('TINYPRESS_Settings')) {
                                 'inline'       => true,
                                 'options'      => $user_roles,
                                 'default'      => array( 'administrator', 'editor' ),
-                                'attributes'   => ! defined('PUBLISHPRESS_SHORTLINKS_PRO_VERSION') ? array( 'disabled' => true ) : array(),
+                                'attributes'   => array( 'disabled' => true ),
                             ),
                             array(
                                 'id'           => 'tinypress_role_edit',
@@ -325,7 +327,7 @@ if (! class_exists('TINYPRESS_Settings')) {
                                 'inline'       => true,
                                 'options'      => $user_roles,
                                 'default'      => array( 'administrator', 'editor' ),
-                                'attributes'   => ! defined('PUBLISHPRESS_SHORTLINKS_PRO_VERSION') ? array( 'disabled' => true ) : array(),
+                                'attributes'   => array( 'disabled' => true ),
                             ),
                         ), $user_roles),
                     ),
@@ -373,7 +375,7 @@ if (! class_exists('TINYPRESS_Settings')) {
                     ),
                     array(
                         'title'  => esc_html__('Expired Links', 'tinypress'),
-                        'fields' => array(
+                        'fields' => apply_filters('tinypress_expired_links_fields', array(
                             array(
                                 'id'          => 'tinypress_expired_redirect_url',
                                 'type'        => 'text',
@@ -382,27 +384,9 @@ if (! class_exists('TINYPRESS_Settings')) {
                                 'desc'        => esc_html__('When a shortlink expires, visitors will be redirected to this URL instead of seeing an error. Leave empty to show the default expiration message.', 'tinypress'),
                                 'placeholder' => esc_html(home_url('/')),
                                 'default'     => '',
-                                'attributes'  => ! defined('PUBLISHPRESS_SHORTLINKS_PRO_VERSION') ? array( 'disabled' => true ) : array(),
+                                'attributes'  => array( 'disabled' => true ),
                             ),
-                            ( defined('PUBLISHPRESS_SHORTLINKS_PRO_VERSION') ?
-                            array(
-                                'id'         => 'tinypress_expired_show_notice',
-                                'type'       => 'switcher',
-                                'title'      => esc_html__('Show Expiration Notice', 'tinypress'),
-                                'label'      => esc_html__('Display a brief notice before redirecting expired links.', 'tinypress'),
-                                'default'    => false,
-                            ) :
-                            array(
-                                'id'      => 'tinypress_expired_show_notice',
-                                'type'    => 'content',
-                                'title'   => esc_html__('Show Expiration Notice', 'tinypress'),
-                                'content' => '<label style="opacity:0.5;pointer-events:none;display:inline-flex;align-items:center;gap:8px;">'
-                                    . '<input type="checkbox" disabled />'
-                                    . esc_html__('Display a brief notice before redirecting expired links.', 'tinypress')
-                                    . '</label>',
-                            )
-                        ),
-                        ),
+                        )),
                     ),
                 ),
             );
