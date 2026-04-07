@@ -35,6 +35,11 @@
             min: 0,
             forceNiceScale: true,
             decimalsInFloat: 0,
+            labels: {
+                formatter: function(val) {
+                    return Math.floor(val);
+                }
+            }
         },
         tooltip: {
             x: {
@@ -82,6 +87,7 @@
                 resetText = tinypressAnalytics.resetYearText;
                 break;
             default:
+                endDate.setHours(23, 59, 59, 999);
                 filterName = 'today';
                 break;
         }
