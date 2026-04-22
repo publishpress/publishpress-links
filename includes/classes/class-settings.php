@@ -26,11 +26,60 @@ if (! class_exists('TINYPRESS_Settings')) {
          */
         public function __construct()
         {
+            add_action('plugins_loaded', array( $this, 'register_custom_statuses_filters' ), 1);
+            
             add_action('init', array( $this, 'create_settings_page' ), 5);
             add_filter('pb_settings_tinypress_settings_save', array( $this, 'sanitize_autolist_settings' ), 10, 2);
             add_action('pb_settings_options_before', array( $this, 'add_settings_wrapper_start' ));
             add_action('pb_settings_options_after', array( $this, 'add_settings_wrapper_end' ));
             add_action('admin_notices', array( $this, 'shortlinks_elementor_prefix_notice' ));
+        }
+
+        public function register_custom_statuses_filters()
+        {
+            add_filter('pb_settings_tinypress_sections', array( $this, 'inject_custom_statuses' ), 999, 1);
+        }
+
+        public function inject_custom_statuses($sections)
+        {
+            if (!class_exists('TINYPRESS_Statuses')) {
+                return $sections;
+            }
+            
+            $statuses_instance = TINYPRESS_Statuses::instance();
+            if (!$statuses_instance || !method_exists($statuses_instance, 'get_custom_statuses')) {
+                return $sections;
+            }
+            
+            $custom_statuses = $statuses_instance->get_custom_statuses();
+            
+            if (empty($custom_statuses)) {
+                return $sections;
+            }
+
+            foreach ($sections as $section_key => $section) {
+                if (isset($section['fields'])) {
+                    foreach ($section['fields'] as $field_key => $field) {
+                        if (isset($field['id']) && $field['id'] === 'tinypress_allowed_post_statuses') {
+                            foreach ($custom_statuses as $status_name => $status_obj) {
+                                $label = '';
+                                if (!empty($status_obj->label)) {
+                                    $label = $status_obj->label;
+                                } elseif (!empty($status_obj->labels) && is_object($status_obj->labels) && !empty($status_obj->labels->name)) {
+                                    $label = $status_obj->labels->name;
+                                } else {
+                                    $label = ucfirst(str_replace(array('-', '_'), ' ', $status_name));
+                                }
+                                
+                                $sections[$section_key]['fields'][$field_key]['options'][$status_name] = $label;
+                            }
+                            return $sections;
+                        }
+                    }
+                }
+            }
+            
+            return $sections;
         }
 
         /**

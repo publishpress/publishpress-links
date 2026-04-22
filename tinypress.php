@@ -203,6 +203,48 @@ if (! defined('TINYPRESS_LOADED')) {
             
                 if (! isset($settings['tinypress_allowed_post_statuses'])) {
                     $settings['tinypress_allowed_post_statuses'] = array( 'publish', 'draft', 'pending', 'private', 'future' );
+
+                    if (defined('PUBLISHPRESS_STATUSES_VERSION') && class_exists('PublishPress_Statuses')) {
+                        $pp_statuses = PublishPress_Statuses::instance();
+                        $pp_statuses->clearStatusCache();
+                        $all_statuses = $pp_statuses->getPostStatuses(array(), 'object', array('show_disabled' => true));
+
+                        if (is_array($all_statuses) && ! empty($all_statuses)) {
+                            $positions = get_option('publishpress_status_positions');
+                            $truly_disabled = array();
+                            if (is_array($positions) && ! empty($positions)) {
+                                $disabled_index = array_search('_disabled', $positions);
+                                if ($disabled_index !== false) {
+                                    $truly_disabled = array_slice($positions, $disabled_index + 1);
+                                    $truly_disabled = array_values(array_filter($truly_disabled, function ($status) {
+                                        return strpos($status, '_') !== 0;
+                                    }));
+                                }
+                            }
+
+                            foreach ($all_statuses as $status_name => $status_obj) {
+                                if (in_array($status_name, array( 'publish', 'draft', 'pending', 'private', 'future', 'trash', 'auto-draft', 'inherit' ), true)) {
+                                    continue;
+                                }
+
+                                if (strpos($status_name, '_') === 0) {
+                                    continue;
+                                }
+
+                                if (in_array($status_name, $truly_disabled, true)) {
+                                    continue;
+                                }
+
+                                if (!empty($status_obj->for_revision) && ! defined('PUBLISHPRESS_STATUSES_PRO_VERSION')) {
+                                    continue;
+                                }
+
+                                $settings['tinypress_allowed_post_statuses'][] = $status_name;
+                            }
+                        }
+
+                        $settings['tinypress_allowed_post_statuses'] = array_values(array_unique($settings['tinypress_allowed_post_statuses']));
+                    }
                 }
 
                 if (! isset($settings['tinypress_role_view'])) {
@@ -255,6 +297,7 @@ if (! defined('TINYPRESS_LOADED')) {
                 require_once TINYPRESS_PLUGIN_DIR . 'includes/classes/class-autolist-ajax.php';
                 require_once TINYPRESS_PLUGIN_DIR . 'includes/classes/class-reviews.php';
                 require_once TINYPRESS_PLUGIN_DIR . 'includes/classes/class-revision.php';
+                require_once TINYPRESS_PLUGIN_DIR . 'includes/classes/class-statuses.php';
 
                 new TINYPRESS_Hooks();
                 new TINYPRESS_Settings();
