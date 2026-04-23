@@ -39,7 +39,7 @@ if (file_exists(__DIR__ . '/lib/vendor' . $bundledTranslationsPath)) {
     require_once TINYPRESS_LIB_VENDOR_PATH . $bundledTranslationsPath;
 }
 
-add_action('plugins_loaded', function() {
+add_action('plugins_loaded', function () {
     if (class_exists('PublishPress\BundledTranslations\BundledTranslations')) {
         $bundledTranslations = new PublishPress\BundledTranslations\BundledTranslations(
             'tinypress',
