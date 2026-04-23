@@ -16,6 +16,9 @@ class TINYPRESS_Statuses
 {
     protected static $_instance = null;
 
+    private const CACHE_GROUP = 'publishpress-shortlinks';
+    private const CACHE_KEY_STATUS_TERMS = 'ppsl_status_terms_post_status_and_visibility_v1';
+
     /**
      * WordPress core statuses
      */
@@ -29,6 +32,10 @@ class TINYPRESS_Statuses
         add_filter('pb_settings_tinypress_settings_sections', array( $this, 'inject_custom_statuses_into_settings' ), 10, 1);
         
         add_action('admin_init', array( $this, 'modify_wpdk_pre_fields' ), 999);
+
+        add_action('created_term', array( $this, 'maybe_invalidate_custom_statuses_cache_for_term' ), 10, 3);
+        add_action('edited_term', array( $this, 'maybe_invalidate_custom_statuses_cache_for_term' ), 10, 3);
+        add_action('delete_term', array( $this, 'maybe_invalidate_custom_statuses_cache_for_term' ), 10, 4);
     }
     
     public function modify_wpdk_pre_fields()
@@ -130,13 +137,18 @@ class TINYPRESS_Statuses
             // Fallback: query post_status and post_visibility_pp taxonomy terms directly
             // from DB to catch any user-created statuses that the PP API may not return
             global $wpdb;
-            $db_terms = $wpdb->get_results(
-                "SELECT t.term_id, t.name, t.slug, tt.taxonomy 
-                 FROM {$wpdb->terms} t 
-                 INNER JOIN {$wpdb->term_taxonomy} tt ON t.term_id = tt.term_id 
-                 WHERE tt.taxonomy IN ('post_status', 'post_visibility_pp')
-                 ORDER BY t.term_id"
-            );
+            $db_terms = wp_cache_get(self::CACHE_KEY_STATUS_TERMS, self::CACHE_GROUP);
+            if ($db_terms === false) {
+                $db_terms = $wpdb->get_results(
+                    "SELECT t.term_id, t.name, t.slug, tt.taxonomy 
+                     FROM {$wpdb->terms} t 
+                     INNER JOIN {$wpdb->term_taxonomy} tt ON t.term_id = tt.term_id 
+                     WHERE tt.taxonomy IN ('post_status', 'post_visibility_pp')
+                     ORDER BY t.term_id"
+                );
+
+                wp_cache_set(self::CACHE_KEY_STATUS_TERMS, $db_terms, self::CACHE_GROUP);
+            }
 
             if (! empty($db_terms)) {
                 foreach ($db_terms as $db_term) {
@@ -190,6 +202,18 @@ class TINYPRESS_Statuses
         });
 
         return array_values($disabled_statuses);
+    }
+
+    public function invalidate_custom_statuses_cache()
+    {
+        wp_cache_delete(self::CACHE_KEY_STATUS_TERMS, self::CACHE_GROUP);
+    }
+
+    public function maybe_invalidate_custom_statuses_cache_for_term($term_id, $tt_id, $taxonomy, $deleted_term = null)
+    {
+        if (in_array($taxonomy, array('post_status', 'post_visibility_pp'))) {
+            $this->invalidate_custom_statuses_cache();
+        }
     }
 
     public function inject_custom_statuses_into_settings($field_sections)
