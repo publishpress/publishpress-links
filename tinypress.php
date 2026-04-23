@@ -31,6 +31,25 @@ if (class_exists('PublishPressInstanceProtection\\Config')) {
     $pluginChecker = new PublishPressInstanceProtection\InstanceChecker($pluginCheckerConfig);
 }
 
+$bundledTranslationsPath = '/publishpress/bundled-translations/core/include.php';
+
+if (file_exists(__DIR__ . '/lib/vendor' . $bundledTranslationsPath)) {
+    require_once __DIR__ . '/lib/vendor' . $bundledTranslationsPath;
+} elseif (defined('TINYPRESS_LIB_VENDOR_PATH') && file_exists(TINYPRESS_LIB_VENDOR_PATH . $bundledTranslationsPath)) {
+    require_once TINYPRESS_LIB_VENDOR_PATH . $bundledTranslationsPath;
+}
+
+add_action('plugins_loaded', function() {
+    if (class_exists('PublishPress\BundledTranslations\BundledTranslations')) {
+        $bundledTranslations = new PublishPress\BundledTranslations\BundledTranslations(
+            'tinypress',
+            __DIR__ . '/languages',
+            __FILE__
+        );
+        $bundledTranslations->init();
+    }
+}, 10);
+
 if (! defined('TINYPRESS_LOADED')) {
     define('TINYPRESS_LOADED', 1);
 
