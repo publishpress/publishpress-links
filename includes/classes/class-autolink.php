@@ -4,6 +4,7 @@ use WPDK\Utils;
 
 defined('ABSPATH') || exit;
 
+// phpcs:disable PSR1.Classes.ClassDeclaration.MissingNamespace, Squiz.Classes.ValidClassName.NotCamelCaps, PSR1.Methods.CamelCapsMethodName.NotCamelCaps
 if (! class_exists('TINYPRESS_AutoLink')) {
     /**
      * TINYPRESS_AutoLink Class
@@ -385,7 +386,7 @@ if (! class_exists('TINYPRESS_AutoLink')) {
                     }
 
                     $item_lower = mb_strtolower($item, 'UTF-8');
-                    $keywords_lower = array_map(function($k) {
+                    $keywords_lower = array_map(function ($k) {
                         return mb_strtolower($k, 'UTF-8');
                     }, $keywords);
                     
@@ -460,7 +461,6 @@ if (! class_exists('TINYPRESS_AutoLink')) {
                 }
 
                 return $output;
-                
             } catch (Exception $e) {
                 do_action('tinypress_autolink_error', $e->getMessage(), $html);
                 return $html;

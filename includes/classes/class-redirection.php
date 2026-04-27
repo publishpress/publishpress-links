@@ -79,7 +79,6 @@ if (! class_exists('TINYPRESS_Redirection')) {
                 add_action('wp_head', array( $this, 'visitor_revision_elementor_support' ), 15);
                 nocache_headers();
             }
-
         }
 
         private function get_settings_value($key, $default = null)
@@ -506,7 +505,6 @@ if (! class_exists('TINYPRESS_Redirection')) {
                         $is_status_allowed = in_array($post_status, $allowed_statuses);
 
                         if (! $is_status_allowed) {
-
                             global $wp_query; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.VariableRedeclaration -- Must re-declare to access in this scope
                             $wp_query->set_404();
                             status_header(404);
