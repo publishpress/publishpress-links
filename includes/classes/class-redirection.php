@@ -612,11 +612,22 @@ if (! class_exists('TINYPRESS_Redirection')) {
             setup_postdata($post);
             
             status_header(200);
-            $single_template = get_query_template('single');
-            if ($single_template) {
-                include($single_template);
+            $template = get_query_template('single');
+            if (! $template && function_exists('get_single_template')) {
+                $template = get_single_template();
+            }
+
+            if (! $template && function_exists('get_singular_template')) {
+                $template = get_singular_template();
+            }
+
+            if (! $template && function_exists('get_index_template')) {
+                $template = get_index_template();
+            }
+
+            if ($template) {
+                include($template);
             } else {
-                // Fallback: display basic post content if no single template found
                 wp_die(esc_html($post->post_title), esc_html($post->post_title), array( 'response' => 200 ));
             }
         }
