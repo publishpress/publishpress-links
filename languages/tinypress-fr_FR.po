@@ -531,7 +531,6 @@ msgid "Post Types"
 msgstr "Types de publication"
 
 #: includes/classes/class-meta-boxes.php:275
-#| msgid "Where should expired shortlinks redirect?"
 msgid "Where should these keywords be auto-linked?"
 msgstr "Où ces mots-clés doivent-ils être automatiquement liés ?"
 
@@ -885,7 +884,6 @@ msgid "Open Auto-Links In"
 msgstr "Ouvrir les liens automatiques dans"
 
 #: includes/classes/class-settings.php:434
-#| msgid "Choose the date this link should expire."
 msgid "Choose how auto-linked keywords should open."
 msgstr "Choisir comment les mots-clés liés automatiquement doivent s’ouvrir."
 
