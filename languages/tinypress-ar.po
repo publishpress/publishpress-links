@@ -2,51 +2,48 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: PublishPress Shortlinks 1.2.6\n"
+"Project-Id-Version: PublishPress Shortlinks Free 1.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Arabic "
-"<https://weblate.publishpress.com/projects/publishpress-shortlinks/"
-"tinypress/ar/>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-03T02:40:43+00:00\n"
-"PO-Revision-Date: 2026-04-07 08:43+0000\n"
-"X-Generator: Weblate 5.14.3\n"
+"POT-Creation-Date: 2026-04-28T09:04:20+00:00\n"
+"PO-Revision-Date: 2026-04-29 12:57+0000\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: tinypress\n"
 "% 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
+"% 100 >= 3 && n % 100 <= 10 ? 3: n % 100 >= 11 ? 4 : 5);\n"
 "Language: ar\n"
 "&& n%100<=10 ? 3: n%100>=11 ? 4 : 5);\n"
-"% 100 >= 3 && n % 100 <= 10 ? 3: n % 100 >= 11 ? 4 : 5);\n"
 "Plural-Forms: nplurals=6; plural=(n == 0 ? 0 : n == 1 ? 1 : n == 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
 
-#: tinypress.php
+#: tinypress.php:4
 #. Plugin Name of the plugin
-#, fuzzy
 msgid "PublishPress Shortlinks Free"
-msgstr "نشر روابط قصيرة PublishPress"
+msgstr "نظام PublishPress للروابط القصيرة المجانية"
 
-#: tinypress.php, fuzzy
+#: tinypress.php:5, fuzzy
 #. Plugin URI of the plugin
 msgid "https://publishpress.com/shortlinks/"
 msgstr "https://publishpress.com/shortlinks/"
 
-#: tinypress.php
+#: tinypress.php:6
 #. Description of the plugin
 msgid ""
 "Create custom links for your posts. These links are brandable, trackable, "
 "and can have custom view permissions."
 msgstr ""
-"أنشئ روابط مخصصة لمشاركاتك. هذه الروابط قابلة للعلامة، قابلة للتتبع، ويمكن "
+"إنشاء روابط مخصصة لمشاركاتك. هذه الروابط قابلة للعلامة، قابلة للتتبع، ويمكن "
 "أن تحتوي على أذونات عرض مخصصة."
 
-#: tinypress.php
+#: tinypress.php:9
 #. Author of the plugin
 msgid "PublishPress"
-msgstr "نشرPress"
+msgstr "PublishPress"
 
-#: tinypress.php, fuzzy
+#: tinypress.php:10, fuzzy
 #. Author URI of the plugin
 msgid "https://publishpress.com/"
 msgstr "https://publishpress.com/"
@@ -56,15 +53,15 @@ msgid ""
 "You're using PublishPress Shortlinks Free. The Pro version has more "
 "features and support. "
 msgstr ""
-"أنت تستخدم PublishPress Shortlinks Free. النسخة المحترفة تحتوي على ميزات "
-"ودعم أكثر. "
+"أنت تستخدم نظام PublishPress للروابط القصيرة المجانية. النسخة الاحترافية "
+"تحتوي على ميزات ودعم أكثر."
 
 #: includes-core/ShortlinksCoreAdmin.php:87
 #: includes-core/ShortlinksCoreAdmin.php:104
 #: includes-core/ShortlinksCoreAdmin.php:105
 #: includes-core/ShortlinksCoreAdmin.php:271
 msgid "Upgrade to Pro"
-msgstr "ترقية إلى برو"
+msgstr "ترقية إلى النسخة الاحترافية"
 
 #: includes-core/ShortlinksCoreAdmin.php:117
 #: includes-core/ShortlinksCoreAdmin.php:196
@@ -73,9 +70,8 @@ msgstr "ميزة احترافية"
 
 #: includes-core/ShortlinksCoreAdmin.php:120
 #: includes-core/ShortlinksCoreAdmin.php:199
-#, fuzzy
 msgid "This feature is available in PublishPress Shortlinks Pro."
-msgstr "ترقية إلى PublishPress Shortlinks Pro"
+msgstr "هذه الميزة متاحة في نظام PublishPress للروابط القصيرة الاحترافية."
 
 #: includes-core/ShortlinksCoreAdmin.php:135
 #: includes-core/ShortlinksCoreAdmin.php:158
@@ -83,21 +79,16 @@ msgid "Show Expiration Notice"
 msgstr "عرض إشعار انتهاء الصلاحية"
 
 #: includes-core/ShortlinksCoreAdmin.php:139
-#, fuzzy
 msgid "Display a brief notice before redirecting expired links."
-msgstr ""
-"عرض إشعار موجز قبل إعادة توجيه الروابط منتهية الصلاحية (باستخدام إعادة "
-"توجيه JavaScript مع تأخير قصير)."
+msgstr "عرض إشعار موجز قبل إعادة توجيه الروابط المنتهية الصلاحية."
 
 #: includes-core/ShortlinksCoreAdmin.php:153
-#, fuzzy
 msgid "Expired Redirect Settings"
-msgstr "رابط إعادة التوجيه الافتراضي منتهي الصلاحية"
+msgstr "إعدادات إعادة التوجيه المنتهية الصلاحية"
 
 #: includes-core/ShortlinksCoreAdmin.php:156
-#, fuzzy
 msgid "Expired Redirect URL"
-msgstr "رابط إعادة التوجيه الافتراضي منتهي الصلاحية"
+msgstr "رابط إعادة التوجيه المنتهي"
 
 #: includes-core/ShortlinksCoreAdmin.php:161
 msgid "Display a brief notice before redirecting."
@@ -114,15 +105,15 @@ msgstr "استيراد / تصدير الروابط القصيرة"
 
 #: includes-core/ShortlinksCoreAdmin.php:254
 msgid "Bulk Import & Export"
-msgstr "الاستيراد والتصدير بالجملة"
+msgstr "استيراد وتصدير بالجملة"
 
 #: includes-core/ShortlinksCoreAdmin.php:255
 msgid ""
 "Import and export your shortlinks in bulk using CSV files. Migrate from "
 "other plugins or manage links across multiple sites."
 msgstr ""
-"استيراد وتصدير روابط الاختصار الخاصة بك بكميات كبيرة باستخدام ملفات CSV. "
-"الهجرة من إضافات أخرى أو إدارة الروابط عبر عدة مواقع."
+"استورد وصدّر روابطك القصيرة بالجملة باستخدام ملفات CSV. انتقل من إضافات "
+"أخرى أو قم بإدارة الروابط عبر مواقع متعددة."
 
 #: includes-core/ShortlinksCoreAdmin.php:259
 msgid "CSV Export"
@@ -137,137 +128,138 @@ msgid "Bulk Management"
 msgstr "إدارة بالجملة"
 
 #: includes/classes/class-autolist-ajax.php:39
-#: includes/classes/class-autolist-ajax.php:194
+#: includes/classes/class-autolist-ajax.php:200
 msgid "Permission denied"
 msgstr "تم رفض الإذن"
 
 #: includes/classes/class-autolist-ajax.php:47
 msgid "Post type is required"
-msgstr "نوع المنشور مطلوب"
+msgstr "نوع المشاركة مطلوب"
 
-#: includes/classes/class-autolist-ajax.php:52
-#, php-format
-msgid "\"%s\" is not a registered post type"
-msgstr "\"%s\" ليس نوع منشور مسجل"
+#: includes/classes/class-autolist-ajax.php:53
+#. translators: %s: post type name
+msgid "\"%%s\" is not a registered post type"
+msgstr "\"%%s\" ليس نوع منشور مسجل"
 
-#: includes/classes/class-autolist-ajax.php:59
-#, php-format
-msgid "\"%s\" is not a public post type"
-msgstr "\"%s\" ليس نوع منشور عام"
+#: includes/classes/class-autolist-ajax.php:61
+#. translators: %s: post type name
+msgid "\"%%s\" is not a public post type"
+msgstr "\"%%s\" ليس نوع منشور عام"
 
-#: includes/classes/class-autolist-ajax.php:65
-#, php-format
-msgid "\"%s\" cannot be used for auto-listing"
-msgstr "\"%s\" لا يمكن استخدامه للتسجيل التلقائي"
+#: includes/classes/class-autolist-ajax.php:68
+#. translators: %s: post type name
+msgid "\"%%s\" cannot be used for auto-listing"
+msgstr "\"%%s\" لا يمكن استخدامه للتسجيل التلقائي"
 
-#: includes/classes/class-autolist-ajax.php:74
-#, php-format
-msgid "\"%s\" is already configured"
-msgstr "\"%s\" تم تكوينه بالفعل"
+#: includes/classes/class-autolist-ajax.php:78
+#. translators: %s: post type name
+msgid "\"%%s\" is already configured"
+msgstr "\"%%s\" تم تكوينه بالفعل"
 
-#: includes/classes/class-autolist-ajax.php:80
-#, php-format
-msgid "Valid: %s"
-msgstr "صالح: %s"
+#: includes/classes/class-autolist-ajax.php:85
+#. translators: %s: post type label
+msgid "Valid: %%s"
+msgstr "صالح: %%s"
 
-#: includes/classes/class-autolist-ajax.php:94
+#: includes/classes/class-autolist-ajax.php:99
 msgid "Permission denied - you must be an administrator"
-msgstr "تم رفض الإذن - يجب أن تكون مسؤولاً"
+msgstr "تم رفض الإذن - يجب أن تكون مشرفًا"
 
-#: includes/classes/class-autolist-ajax.php:102
+#: includes/classes/class-autolist-ajax.php:107
 msgid "Invalid configuration format - expected array"
-msgstr "تنسيق تكوين غير صالح - متوقع مصفوفة"
+msgstr "تنسيق التكوين غير صالح - متوقع مصفوفة"
 
-#: includes/classes/class-autolist-ajax.php:123
+#: includes/classes/class-autolist-ajax.php:128
 msgid "Configuration unchanged (already saved)"
 msgstr "التكوين لم يتغير (تم حفظه بالفعل)"
 
-#: includes/classes/class-autolist-ajax.php:127
+#: includes/classes/class-autolist-ajax.php:132
 msgid "Failed to save configuration to database"
 msgstr "فشل في حفظ التكوين في قاعدة البيانات"
 
-#: includes/classes/class-autolist-ajax.php:132
+#: includes/classes/class-autolist-ajax.php:137
 msgid "Configuration saved successfully"
 msgstr "تم حفظ التكوين بنجاح"
 
-#: includes/classes/class-autolist-ajax.php:138
+#: includes/classes/class-autolist-ajax.php:144
+#. translators: %s: error message
 #, php-format
 msgid "Error: %s"
 msgstr "خطأ: %s"
 
-#: includes/classes/class-autolist-ajax.php:283
+#: includes/classes/class-autolist-ajax.php:289
 msgid "Validating..."
-msgstr "يجري التحقق..."
+msgstr "جارٍ التحقق..."
 
-#: includes/classes/class-autolist-ajax.php:284
+#: includes/classes/class-autolist-ajax.php:290
 msgid "Saving..."
 msgstr "جارٍ الحفظ..."
 
-#: includes/classes/class-autolist-ajax.php:285
+#: includes/classes/class-autolist-ajax.php:291
 msgid "Saved!"
 msgstr "تم الحفظ!"
 
-#: includes/classes/class-autolist-ajax.php:286
+#: includes/classes/class-autolist-ajax.php:292
 msgid "Error"
 msgstr "خطأ"
 
-#: includes/classes/class-autolist-ajax.php:287
+#: includes/classes/class-autolist-ajax.php:293
 msgid "Are you sure you want to remove this post type?"
-msgstr "هل أنت متأكد أنك تريد إزالة نوع المنشور هذا؟"
+msgstr "هل أنت متأكد أنك تريد إزالة نوع المشاركة هذا؟"
 
-#: includes/classes/class-autolist-ajax.php:288
+#: includes/classes/class-autolist-ajax.php:294
 msgid "Select a post type"
-msgstr "اختر نوع المنشور"
+msgstr "اختر نوع مشاركة"
 
-#: includes/classes/class-autolist-ajax.php:289
-#: includes/classes/class-settings.php:407
-#: includes/classes/class-settings.php:503
+#: includes/classes/class-autolist-ajax.php:295
+#: includes/classes/class-settings.php:595
+#: includes/classes/class-settings.php:691
 msgid "Never"
 msgstr "أبداً"
 
-#: includes/classes/class-autolist-ajax.php:290
-#: includes/classes/class-settings.php:405
-#: includes/classes/class-settings.php:505
+#: includes/classes/class-autolist-ajax.php:296
+#: includes/classes/class-settings.php:593
+#: includes/classes/class-settings.php:693
 msgid "When Link is First Used"
-msgstr "عند استخدام الرابط لأول مرة"
+msgstr "عندما يتم استخدام الرابط لأول مرة"
 
-#: includes/classes/class-autolist-ajax.php:291
-#: includes/classes/class-settings.php:507
+#: includes/classes/class-autolist-ajax.php:297
+#: includes/classes/class-settings.php:695
 msgid "When Post is Published"
-msgstr "عند نشر المنشور"
+msgstr "عندما يتم نشر المشاركة"
 
-#: includes/classes/class-autolist-ajax.php:292
-#: includes/classes/class-settings.php:506
+#: includes/classes/class-autolist-ajax.php:298
+#: includes/classes/class-settings.php:694
 msgid "When Post is Created"
-msgstr "عند إنشاء منشور"
+msgstr "عندما يتم إنشاء المشاركة"
 
-#: includes/classes/class-autolist-ajax.php:293
-#: includes/classes/class-settings.php:504
+#: includes/classes/class-autolist-ajax.php:299
+#: includes/classes/class-settings.php:692
 msgid "When Link is First Used or Post Created"
-msgstr "عند استخدام الرابط لأول مرة أو إنشاء منشور"
+msgstr "عندما يتم استخدام الرابط لأول مرة أو يتم إنشاء المشاركة"
 
 #: includes/classes/class-autolist.php:119
 msgid "Invalid post ID or post type."
-msgstr "معرف منشور غير صالح أو نوع منشور غير صالح."
+msgstr "معرف مشاركة غير صالح أو نوع مشاركة."
 
 #: includes/classes/class-columns-link.php:49
-#: includes/classes/class-columns-link.php:277
+#: includes/classes/class-columns-link.php:279
 #: includes/classes/class-hooks.php:207
-#: includes/classes/class-table-logs.php:163
+#: includes/classes/class-table-logs.php:164
 #: templates/admin-modal-new-link.php:29
 msgid "Shortlink"
-msgstr "رابط مختصر"
+msgstr "رابط قصير"
 
 #: includes/classes/class-columns-link.php:71
 msgid "No shortlink"
-msgstr "لا رابط قصير"
+msgstr "لا يوجد رابط قصير"
 
 #: includes/classes/class-columns-link.php:92
 #: includes/classes/class-hooks.php:208
 #: includes/classes/class-hooks.php:210
 #: includes/classes/class-meta-boxes.php:93
 msgid "Shortlinks"
-msgstr "الروابط المختصرة"
+msgstr "روابط قصيرة"
 
 #: includes/classes/class-columns-link.php:176
 msgid "Internal"
@@ -279,19 +271,19 @@ msgstr "خارجي"
 
 #: includes/classes/class-columns-link.php:177
 msgid "This links to your post"
-msgstr "هذا الرابط يشير إلى منشورك"
+msgstr "هذا يربط بمشاركتك"
 
 #: includes/classes/class-columns-link.php:177
 msgid "This links to an external website"
-msgstr "هذا الرابط يشير إلى موقع ويب خارجي"
+msgstr "هذا يربط بموقع ويب خارجي"
 
 #: includes/classes/class-columns-link.php:189
 msgid "Revision"
-msgstr "المراجعة"
+msgstr "مراجعة"
 
 #: includes/classes/class-columns-link.php:190
 msgid "This links to a revision"
-msgstr "هذا الرابط يشير إلى مراجعة"
+msgstr "هذا يربط بمراجعة"
 
 #: includes/classes/class-columns-link.php:198
 msgid "Not yet submitted"
@@ -299,12 +291,12 @@ msgstr "لم يتم تقديمه بعد"
 
 #: includes/classes/class-columns-link.php:199
 msgid "Submitted for approval"
-msgstr "تم تقديمه للموافقة"
+msgstr "مقدم للموافقة"
 
 #: includes/classes/class-columns-link.php:200
-#: includes/classes/class-settings.php:370
+#: includes/classes/class-settings.php:558
 msgid "Scheduled"
-msgstr "المجدول"
+msgstr "مجدد"
 
 #: includes/classes/class-columns-link.php:201
 msgid "Deferred"
@@ -316,48 +308,50 @@ msgstr "يحتاج إلى عمل"
 
 #: includes/classes/class-columns-link.php:203
 msgid "Rejected"
-msgstr "مرفوضة"
+msgstr "تم الرفض"
 
-#: includes/classes/class-columns-link.php:206
+#: includes/classes/class-columns-link.php:207
+#. translators: %s: revision status label
 #, php-format
 msgid "Revision: %s"
 msgstr "المراجعة: %s"
 
-#: includes/classes/class-columns-link.php:222
+#: includes/classes/class-columns-link.php:224
+#. translators: %s: number of clicks
 #, php-format
 msgid "Clicked %s times"
 msgstr "تم النقر %s مرات"
 
-#: includes/classes/class-columns-link.php:228
-#: includes/classes/class-table-logs.php:196
+#: includes/classes/class-columns-link.php:230
+#: includes/classes/class-table-logs.php:197
 msgid "Edit"
 msgstr "تعديل"
 
-#: includes/classes/class-columns-link.php:229
-#: includes/classes/class-table-logs.php:177
-#: includes/classes/class-table-logs.php:198
+#: includes/classes/class-columns-link.php:231
+#: includes/classes/class-table-logs.php:178
+#: includes/classes/class-table-logs.php:199
 msgid "Delete"
 msgstr "حذف"
 
-#: includes/classes/class-columns-link.php:276
+#: includes/classes/class-columns-link.php:278
 msgid "Link Title"
 msgstr "عنوان الرابط"
 
-#: includes/classes/class-columns-link.php:278
+#: includes/classes/class-columns-link.php:280
 msgid "Link Type"
 msgstr "نوع الرابط"
 
-#: includes/classes/class-columns-link.php:279
+#: includes/classes/class-columns-link.php:281
 msgid "Stats"
 msgstr "الإحصائيات"
 
-#: includes/classes/class-columns-link.php:280
+#: includes/classes/class-columns-link.php:282
 msgid "Actions"
 msgstr "الإجراءات"
 
 #: includes/classes/class-functions.php:43
 msgid "Click to copy"
-msgstr "انقر لنسخ"
+msgstr "انقر للنسخ"
 
 #: includes/classes/class-functions.php:51
 msgid "Copied"
@@ -365,7 +359,7 @@ msgstr "تم النسخ"
 
 #: includes/classes/class-hooks.php:61
 msgid "Security check failed."
-msgstr "فحص الأمان فشل."
+msgstr "فشل التحقق من الأمان."
 
 #: includes/classes/class-hooks.php:65
 msgid "You do not have permission to create shortlinks."
@@ -373,15 +367,15 @@ msgstr "ليس لديك إذن لإنشاء روابط قصيرة."
 
 #: includes/classes/class-hooks.php:72
 msgid "Invalid or empty URL"
-msgstr "رابط غير صالح أو فارغ"
+msgstr "رابط URL غير صالح أو فارغ"
 
 #: includes/classes/class-hooks.php:89
 msgid "Shortlink created successfully."
-msgstr "تم إنشاء الرابط المختصر بنجاح."
+msgstr "تم إنشاء الرابط القصير بنجاح."
 
 #: includes/classes/class-hooks.php:98
 msgid "Invalid nonce verification."
-msgstr "التحقق من الرمز غير صالح."
+msgstr "تحقق غير صالح من nonce."
 
 #: includes/classes/class-hooks.php:102
 msgid "You do not have permission to reset analytics."
@@ -389,7 +383,7 @@ msgstr "ليس لديك إذن لإعادة تعيين التحليلات."
 
 #: includes/classes/class-hooks.php:109
 msgid "Invalid post ID."
-msgstr "معرف منشور غير صالح."
+msgstr "معرف المنشور غير صالح."
 
 #: includes/classes/class-hooks.php:140
 msgid "Analytics reset successfully."
@@ -407,78 +401,84 @@ msgstr "اختصار"
 msgid "All Shortlinks"
 msgstr "جميع الروابط القصيرة"
 
-#: includes/classes/class-hooks.php:226
+#: includes/classes/class-hooks.php:212
+#: includes/classes/class-hooks.php:213
+msgid "Add Shortlink"
+msgstr "إضافة رابط قصير"
+
+#: includes/classes/class-hooks.php:214
+msgid "Search Shortlinks"
+msgstr "البحث عن الروابط القصيرة"
+
+#: includes/classes/class-hooks.php:229
 msgid "Category"
 msgstr "فئة"
 
-#: includes/classes/class-hooks.php:227
+#: includes/classes/class-hooks.php:230
 msgid "Categories"
-msgstr "الفئات"
+msgstr "فئات"
 
-#: includes/classes/class-hooks.php:253
-#: includes/classes/class-hooks.php:254
+#: includes/classes/class-hooks.php:256
+#: includes/classes/class-hooks.php:257
 msgid "Logs"
 msgstr "السجلات"
 
-#: includes/classes/class-hooks.php:282
+#: includes/classes/class-hooks.php:285
 msgid "All Logs"
 msgstr "جميع السجلات"
 
-#: includes/classes/class-hooks.php:282
+#: includes/classes/class-hooks.php:285
 msgid "Are you sure you want to clear all logs?"
 msgstr "هل أنت متأكد أنك تريد مسح جميع السجلات؟"
 
-#: includes/classes/class-hooks.php:282
+#: includes/classes/class-hooks.php:285
 msgid "Clear Logs"
 msgstr "مسح السجلات"
 
-#: includes/classes/class-hooks.php:503
+#: includes/classes/class-hooks.php:506
 msgid "Sorry, you are not allowed to access shortlinks."
-msgstr "عذراً، ليس لديك إذن للوصول إلى الروابط القصيرة."
+msgstr "عذرًا، ليس لديك إذن للوصول إلى الروابط القصيرة."
 
-#: includes/classes/class-hooks.php:504
-#: includes/classes/class-hooks.php:525
-#: includes/classes/class-hooks.php:536
-#: includes/classes/class-hooks.php:557
+#: includes/classes/class-hooks.php:507
+#: includes/classes/class-hooks.php:528
+#: includes/classes/class-hooks.php:539
+#: includes/classes/class-hooks.php:560
 msgid "Access Denied"
 msgstr "تم رفض الوصول"
 
-#: includes/classes/class-hooks.php:524
-#, fuzzy
+#: includes/classes/class-hooks.php:527
 msgid "Sorry, you are not allowed to create shortlinks."
-msgstr "عذراً، ليس لديك إذن للوصول إلى الروابط القصيرة."
+msgstr "عذرًا، ليس لديك إذن لإنشاء روابط قصيرة."
 
-#: includes/classes/class-hooks.php:535
-#, fuzzy
+#: includes/classes/class-hooks.php:538
 msgid "Sorry, you are not allowed to edit shortlinks."
-msgstr "عذراً، ليس لديك إذن للوصول إلى الروابط القصيرة."
+msgstr "عذرًا، ليس لديك إذن لتحرير الروابط القصيرة."
 
-#: includes/classes/class-hooks.php:556
-#, fuzzy
+#: includes/classes/class-hooks.php:559
 msgid "Sorry, you are not allowed to access shortlink settings."
-msgstr "عذراً، ليس لديك إذن للوصول إلى الروابط القصيرة."
+msgstr "عذرًا، ليس لديك إذن للوصول إلى إعدادات الروابط القصيرة."
 
 #: includes/classes/class-meta-boxes.php:76
 msgid "Side"
 msgstr "جانب"
 
 #: includes/classes/class-meta-boxes.php:187
-#: tinypress.php:380
+#: tinypress.php:448
 msgid "PublishPress Shortlinks"
-msgstr "نشر روابط قصيرة PublishPress"
+msgstr "روابط PublishPress القصيرة"
 
 #: includes/classes/class-meta-boxes.php:200
-#: includes/classes/class-settings.php:246
+#: includes/classes/class-settings.php:401
 msgid "General"
 msgstr "عام"
 
 #: includes/classes/class-meta-boxes.php:205
 msgid "Label *"
-msgstr "التسمية *"
+msgstr "تسمية *"
 
 #: includes/classes/class-meta-boxes.php:207
 msgid "For admin purpose only."
-msgstr "لأغراض الإدارة فقط."
+msgstr "لأغراض المسؤول فقط."
 
 #: includes/classes/class-meta-boxes.php:216
 msgid "Target URL *"
@@ -486,11 +486,11 @@ msgstr "عنوان URL المستهدف *"
 
 #: includes/classes/class-meta-boxes.php:226
 msgid "Short String *"
-msgstr "نص قصير *"
+msgstr "سلسلة قصيرة *"
 
 #: includes/classes/class-meta-boxes.php:227
 msgid "Short string of this URL."
-msgstr "نص قصير من هذا الرابط."
+msgstr "سلسلة قصيرة من هذا الرابط."
 
 #: includes/classes/class-meta-boxes.php:233
 msgid "Status"
@@ -502,7 +502,7 @@ msgstr "تعطيل الرابط القصير على الفور."
 
 #: includes/classes/class-meta-boxes.php:235
 msgid "After disabling the link will not active but the settings will be reserved."
-msgstr "بعد تعطيل الرابط، لن يكون نشطًا ولكن سيتم الاحتفاظ بالإعدادات."
+msgstr "بعد تعطيل الرابط لن يكون نشطًا ولكن سيتم الاحتفاظ بالإعدادات."
 
 #: includes/classes/class-meta-boxes.php:236
 msgid "Enable"
@@ -516,536 +516,613 @@ msgstr "تعطيل"
 msgid "Notes"
 msgstr "ملاحظات"
 
-#: includes/classes/class-meta-boxes.php:254
-msgid "Redirection"
-msgstr "إعادة التوجيه"
+#: includes/classes/class-meta-boxes.php:251
+msgid "All"
+msgstr "الجميع"
 
-#: includes/classes/class-meta-boxes.php:259
+#: includes/classes/class-meta-boxes.php:263
+msgid "Auto-linking"
+msgstr "الارتباط التلقائي"
+
+#: includes/classes/class-meta-boxes.php:268
+msgid "Keywords"
+msgstr "الكلمات الرئيسية"
+
+#: includes/classes/class-meta-boxes.php:269
+msgid ""
+"Add keywords separated by commas or on separate lines. Each keyword will "
+"link to this shortlink."
+msgstr ""
+"أضف كلمات رئيسية مفصولة بفواصل أو في أسطر منفصلة. كل كلمة رئيسية ستربط بهذا "
+"الرابط القصير."
+
+#: includes/classes/class-meta-boxes.php:274
+msgid "Post Types"
+msgstr "أنواع المنشورات"
+
+#: includes/classes/class-meta-boxes.php:275
+msgid "Where should these keywords be auto-linked?"
+msgstr "أين يجب أن يتم الربط التلقائي لهذه الكلمات الرئيسية؟"
+
+#: includes/classes/class-meta-boxes.php:288
+msgid "Redirection"
+msgstr "إعادة توجيه"
+
+#: includes/classes/class-meta-boxes.php:293
 msgid "Redirection Method"
 msgstr "طريقة إعادة التوجيه"
 
-#: includes/classes/class-meta-boxes.php:260
+#: includes/classes/class-meta-boxes.php:294
 msgid "Select redirection method"
-msgstr "اختر طريقة التوجيه"
+msgstr "اختر طريقة إعادة التوجيه"
 
-#: includes/classes/class-meta-boxes.php:261
-#, fuzzy
+#: includes/classes/class-meta-boxes.php:295
 msgid "Select a method"
-msgstr "اختر طريقة التوجيه"
+msgstr "اختر طريقة"
 
-#: includes/classes/class-meta-boxes.php:263
+#: includes/classes/class-meta-boxes.php:297
 msgid "307 (Temporary)"
 msgstr "307 (مؤقت)"
 
-#: includes/classes/class-meta-boxes.php:264
+#: includes/classes/class-meta-boxes.php:298
 msgid "302 (Temporary)"
 msgstr "302 (مؤقت)"
 
-#: includes/classes/class-meta-boxes.php:265
+#: includes/classes/class-meta-boxes.php:299
 msgid "301 (Permanent)"
 msgstr "301 (دائم)"
 
-#: includes/classes/class-meta-boxes.php:272
+#: includes/classes/class-meta-boxes.php:306
 msgid "Sponsored"
 msgstr "مدعوم"
 
-#: includes/classes/class-meta-boxes.php:273
+#: includes/classes/class-meta-boxes.php:307
 msgid "Mark links as sponsored content."
-msgstr "تحديد الروابط كمحتوى ممول."
+msgstr "تحديد الروابط كمحتوى مدعوم."
 
-#: includes/classes/class-meta-boxes.php:274
+#: includes/classes/class-meta-boxes.php:308
 msgid ""
 "Adds rel=\"sponsored\" attribute. Recommended for affiliate links and paid "
 "promotions."
-msgstr "يضيف سمة rel=\"sponsored\". موصى بها لروابط الشركاء والترقيات المدفوعة."
+msgstr "يضيف سمة rel=\"مدعوم\". موصى به للروابط التابعة والترويج المدفوع."
 
-#: includes/classes/class-meta-boxes.php:279
+#: includes/classes/class-meta-boxes.php:313
 msgid "NoFollow"
 msgstr "عدم المتابعة"
 
-#: includes/classes/class-meta-boxes.php:280
+#: includes/classes/class-meta-boxes.php:314
 msgid "Prevent search engines from following this link."
 msgstr "منع محركات البحث من متابعة هذا الرابط."
 
-#: includes/classes/class-meta-boxes.php:281
+#: includes/classes/class-meta-boxes.php:315
 msgid ""
 "Adds rel=\"nofollow\" attribute. Recommended for external links and "
 "untrusted sources."
-msgstr "يضيف سمة rel=\"nofollow\". موصى بها للروابط الخارجية والمصادر غير الموثوقة."
+msgstr "يضيف سمة rel=\"nofollow\". موصى به للروابط الخارجية والمصادر غير الموثوقة."
 
-#: includes/classes/class-meta-boxes.php:287
+#: includes/classes/class-meta-boxes.php:321
 msgid "Parameter Forwarding"
-msgstr "إعادة توجيه المعلمات"
+msgstr "إعادة توجيه المعاملات"
 
-#: includes/classes/class-meta-boxes.php:288
+#: includes/classes/class-meta-boxes.php:322
 msgid "Pass URL parameters to the target link."
 msgstr "تمرير معلمات URL إلى الرابط المستهدف."
 
-#: includes/classes/class-meta-boxes.php:289
+#: includes/classes/class-meta-boxes.php:323
 msgid ""
 "Any parameters added to the short URL (e.g., ?utm_source=email) will be "
 "forwarded to the target URL."
 msgstr ""
-"أي معلمات تُضاف إلى عنوان URL القصير (مثل: ?utm_source=email) سيتم توجيهها "
-"إلى عنوان URL المستهدف."
+"سيتم إعادة توجيه أي معلمات مضافة إلى الرابط القصير (مثل: ?utm_source=email) "
+"إلى URL المستهدف."
 
-#: includes/classes/class-meta-boxes.php:299
+#: includes/classes/class-meta-boxes.php:333
 msgid "Password Protection"
-msgstr "حماية بكلمة المرور"
+msgstr "حماية بكلمة مرور"
 
-#: includes/classes/class-meta-boxes.php:300
+#: includes/classes/class-meta-boxes.php:334
 msgid "Secure your shortlink."
 msgstr "قم بتأمين رابطك القصير."
 
-#: includes/classes/class-meta-boxes.php:301
+#: includes/classes/class-meta-boxes.php:335
 msgid "Users must enter the password to redirect to the target link."
 msgstr "يجب على المستخدمين إدخال كلمة المرور لإعادة التوجيه إلى الرابط المستهدف."
 
-#: includes/classes/class-meta-boxes.php:306
+#: includes/classes/class-meta-boxes.php:340
 msgid "Password"
 msgstr "كلمة المرور"
 
-#: includes/classes/class-meta-boxes.php:307
+#: includes/classes/class-meta-boxes.php:341
 msgid "Share this with users."
 msgstr "شارك هذا مع المستخدمين."
 
-#: includes/classes/class-meta-boxes.php:308
+#: includes/classes/class-meta-boxes.php:342
 msgid "Passwords are case sensitive."
 msgstr "كلمات المرور حساسة لحالة الأحرف."
 
-#: includes/classes/class-meta-boxes.php:309, fuzzy
+#: includes/classes/class-meta-boxes.php:343, fuzzy
 msgid "********"
 msgstr "********"
 
-#: includes/classes/class-meta-boxes.php:318
+#: includes/classes/class-meta-boxes.php:352
 msgid "Enable Expiration"
 msgstr "تفعيل انتهاء الصلاحية"
 
-#: includes/classes/class-meta-boxes.php:319
+#: includes/classes/class-meta-boxes.php:353
 msgid "Expire automatically."
-msgstr "انتهت الصلاحية تلقائيًا."
+msgstr "تنتهي تلقائيًا."
 
-#: includes/classes/class-meta-boxes.php:320
+#: includes/classes/class-meta-boxes.php:354
 msgid "Users will not able to redirect to the target URL once expire."
-msgstr ""
-"لن يتمكن المستخدمون من إعادة التوجيه إلى عنوان URL المستهدف بمجرد انتهاء "
-"صلاحيته."
+msgstr "لن يتمكن المستخدمون من إعادة التوجيه إلى URL المستهدف بمجرد انتهاء الصلاحية."
 
-#: includes/classes/class-meta-boxes.php:325
+#: includes/classes/class-meta-boxes.php:359
 msgid "Expiration Date"
 msgstr "تاريخ انتهاء الصلاحية"
 
-#: includes/classes/class-meta-boxes.php:326
+#: includes/classes/class-meta-boxes.php:360
 msgid "Choose the date this link should expire."
-msgstr "اختر التاريخ الذي يجب أن تنتهي فيه هذه الروابط."
+msgstr "اختر التاريخ الذي يجب أن ينتهي فيه هذا الرابط."
 
-#: includes/classes/class-meta-boxes.php:338
-#, fuzzy
+#: includes/classes/class-meta-boxes.php:372
 msgid "Expiration Time"
-msgstr "تاريخ انتهاء الصلاحية"
+msgstr "وقت انتهاء الصلاحية"
 
-#: includes/classes/class-meta-boxes.php:339
+#: includes/classes/class-meta-boxes.php:373
 msgid "Choose the time this link should expire."
-msgstr "اختر الوقت الذي يجب أن تنتهي فيه هذه الروابط."
+msgstr "اختر الوقت الذي يجب أن ينتهي فيه هذا الرابط."
 
-#: includes/classes/class-meta-boxes.php:340
+#: includes/classes/class-meta-boxes.php:374
 msgid "Must be at least 1 minute in the future."
 msgstr "يجب أن يكون في المستقبل على الأقل دقيقة واحدة."
 
-#: includes/classes/class-meta-boxes.php:357
+#: includes/classes/class-meta-boxes.php:391
 msgid "Security"
 msgstr "الأمان"
 
-#: includes/classes/class-meta-boxes.php:368
+#: includes/classes/class-meta-boxes.php:402
 msgid "Analytics"
 msgstr "التحليلات"
 
-#: includes/classes/class-redirection.php:543
+#: includes/classes/class-redirection.php:599
 msgid "Post not found."
 msgstr "لم يتم العثور على المنشور."
 
-#: includes/classes/class-redirection.php:585
-msgid "Link Expired"
-msgstr "الرابط منتهي الصلاحية"
-
-#: includes/classes/class-redirection.php:598
+#: includes/classes/class-redirection.php:648
 msgid "This link has expired"
-msgstr "هذه الرابط قد انتهت صلاحيته"
+msgstr "هذا الرابط قد انتهت صلاحيته"
 
-#: includes/classes/class-redirection.php:599
+#: includes/classes/class-redirection.php:652
 msgid "You will be redirected shortly."
 msgstr "سيتم إعادة توجيهك قريبًا."
 
-#: includes/classes/class-redirection.php:600
+#: includes/classes/class-redirection.php:656
 msgid "Click here if you are not redirected"
 msgstr "انقر هنا إذا لم يتم إعادة توجيهك"
 
-#: includes/classes/class-redirection.php:716
+#: includes/classes/class-redirection.php:673
+msgid "Link Expired"
+msgstr "انتهت صلاحية الرابط"
+
+#: includes/classes/class-redirection.php:804
 msgid "This link is not active."
 msgstr "هذا الرابط غير نشط."
 
-#: includes/classes/class-redirection.php:750
+#: includes/classes/class-redirection.php:849
 msgid "This link is expired."
-msgstr "هذا الرابط قد انتهت صلاحيته."
+msgstr "هذا الرابط منتهي الصلاحية."
 
-#: includes/classes/class-redirection.php:769
+#: includes/classes/class-redirection.php:868
 msgid "Incorrect password. Please try again."
 msgstr "كلمة المرور غير صحيحة. يرجى المحاولة مرة أخرى."
 
-#: includes/classes/class-redirection.php:784
-#: includes/classes/class-redirection.php:789
-#, fuzzy
+#: includes/classes/class-redirection.php:883
+#: includes/classes/class-redirection.php:888
 msgid "Password Protected Link"
-msgstr "حماية بكلمة المرور"
+msgstr "رابط محمي بكلمة مرور"
 
-#: includes/classes/class-redirection.php:795
+#: includes/classes/class-redirection.php:894
 msgid "Enter password to continue:"
 msgstr "أدخل كلمة المرور للمتابعة:"
 
-#: includes/classes/class-redirection.php:797
+#: includes/classes/class-redirection.php:896
 msgid "Submit"
 msgstr "إرسال"
 
-#: includes/classes/class-redirection.php:915
+#: includes/classes/class-redirection.php:1014
 msgid "This link is not containing the right prefix slug."
-msgstr "هذا الرابط لا يحتوي على الصيغة الصحيحة السابقة."
+msgstr "هذا الرابط لا يحتوي على بادئة السلاugs الصحيحة."
 
-#: includes/classes/class-revision.php:395
+#: includes/classes/class-revision.php:439
 msgid "Invalid revision ID."
-msgstr "معرف مراجعة غير صالح."
+msgstr "معرف النسخة غير صالح."
 
-#: includes/classes/class-settings.php:102
+#: includes/classes/class-settings.php:187
 msgid "Settings"
 msgstr "الإعدادات"
 
-#: includes/classes/class-settings.php:152
-msgid "Elementor Detected:"
-msgstr "تم الكشف عن Elementor:"
-
-#: includes/classes/class-settings.php:153
-msgid ""
-"Shortlink prefix is required for proper rendering of Elementor revisions. "
-"It is advisable to keep it enabled."
-msgstr ""
-"البادئة المختصرة مطلوبة للتصوير الصحيح لإصدارات Elementor. من المستحسن "
-"الاحتفاظ بها مفعلة."
-
-#: includes/classes/class-settings.php:185
-#, fuzzy
-msgid "TinyPress Shortlinks Notice:"
-msgstr "نشر روابط قصيرة PublishPress"
-
-#: includes/classes/class-settings.php:186
-msgid ""
-"Elementor is active. Shortlink prefix has been automatically disabled, it "
-"is required for optimal compatibility with Elementor revisions."
-msgstr ""
-"Elementor نشط. تم تعطيل البادئة المختصرة تلقائيًا، وهي مطلوبة لملاءمة مثلى "
-"مع إصدارات Elementor."
-
-#: includes/classes/class-settings.php:249
-msgid "Options"
-msgstr "خيارات"
-
-#: includes/classes/class-settings.php:254
-msgid "Shortlink Prefix"
-msgstr "بادئة الرابط المختصر"
-
-#: includes/classes/class-settings.php:255
-msgid "Add a prefix between your domain name and shortlink."
-msgstr "أضف بادئة بين اسم نطاقك والرابط المختصر."
-
-#: includes/classes/class-settings.php:262
-msgid "Prefix Slug"
-msgstr "بادئة السلاugs"
-
-#: includes/classes/class-settings.php:263
-msgid "Custom prefix slug."
-msgstr "لقب بادئة مخصص."
-
-#: includes/classes/class-settings.php:264
-msgid "This text will be added between your domain name and shortlink."
-msgstr "سيتم إضافة هذا النص بين اسم النطاق الخاص بك والرابط القصير."
-
-#: includes/classes/class-settings.php:265
-#: includes/classes/class-settings.php:266
-msgid "go"
-msgstr "اذهب"
-
-#: includes/classes/class-settings.php:272
-msgid "Keyboard Shortcut"
-msgstr "اختصار لوحة المفاتيح"
-
-#: includes/classes/class-settings.php:273
-msgid "Create shortlinks from anywhere inside your WordPress dashboard."
-msgstr "إنشاء روابط قصيرة من أي مكان داخل لوحة تحكم ووردبريس الخاصة بك."
-
-#: includes/classes/class-settings.php:274
-#: includes/classes/class-settings.php:275
-msgid "Ctrl or Cmd + /"
-msgstr "Ctrl أو Cmd + /"
-
-#: includes/classes/class-settings.php:284
-msgid "Remove from Admin Bar"
-msgstr "إزالة من شريط الإدارة"
-
-#: includes/classes/class-settings.php:285
-msgid "Hide the \"Shorten\" button from the WordPress admin bar."
-msgstr "إخفاء زر \"تقليص\" من شريط إدارة ووردبريس."
-
-#: includes/classes/class-settings.php:291
-msgid "Role Management"
-msgstr "إدارة الأدوار"
-
-#: includes/classes/class-settings.php:296
-msgid "Who Can View Shortlinks"
-msgstr "من يمكنه عرض الروابط القصيرة"
-
-#: includes/classes/class-settings.php:297
-msgid "Only selected user roles can view links."
-msgstr "يمكن فقط للأدوار المحددة للمستخدمين مشاهدة الروابط."
-
-#: includes/classes/class-settings.php:305
-msgid "Who Can Create/Edit Shortlinks"
-msgstr "من يمكنه إنشاء/تعديل الروابط القصيرة"
-
-#: includes/classes/class-settings.php:306
-msgid "Only selected user roles can create or edit links."
-msgstr "يمكن للأدوار المحددة فقط إنشاء أو تعديل الروابط."
-
-#: includes/classes/class-settings.php:315
-msgid "Who Can See Analytics"
-msgstr "من يمكنه رؤية التحليلات"
-
-#: includes/classes/class-settings.php:316
-msgid "Only selected user roles can see analytics."
-msgstr "يمكن للأدوار المحددة فقط رؤية التحليلات."
-
-#: includes/classes/class-settings.php:325
-msgid "Who Can Control Settings"
-msgstr "من يمكنه التحكم في الإعدادات"
-
-#: includes/classes/class-settings.php:326
-msgid "Only selected user roles can control settings."
-msgstr "يمكن للأدوار المحددة فقط التحكم في الإعدادات."
-
-#: includes/classes/class-settings.php:335
-msgid "Auto-List Links"
-msgstr "روابط القائمة التلقائية"
-
-#: includes/classes/class-settings.php:340
-msgid "Auto-List Shortlinks"
-msgstr "الروابط القصيرة التلقائية"
-
-#: includes/classes/class-settings.php:341
-msgid ""
-"When enabled, shortlinks will appear in the \"All Links\" table based on "
-"the behavior you configure below."
-msgstr ""
-"عند التمكين، ستظهر روابط الاختصار في جدول \"جميع الروابط\" بناءً على السلوك "
-"الذي تقوم بتكوينه أدناه."
-
-#: includes/classes/class-settings.php:347
-msgid "Configure Post Types"
-msgstr "تكوين أنواع المنشورات"
-
-#: includes/classes/class-settings.php:348
-msgid "Set when links should be auto-listed for each post type"
-msgstr "حدد متى يجب أن يتم إدراج الروابط تلقائيًا لكل نوع من أنواع المنشورات"
-
-#: includes/classes/class-settings.php:349
-msgid ""
-"Add post types and configure when their shortlinks should appear in the "
-"\"All Links\" table. Changes are saved automatically."
-msgstr ""
-"أضف أنواع المنشورات وقم بتكوين متى يجب أن تظهر روابط الاختصار الخاصة بها في "
-"جدول \"جميع الروابط\". يتم حفظ التغييرات تلقائيًا."
-
-#: includes/classes/class-settings.php:356
-msgid "Post Status Visibility"
-msgstr "مرئية حالة المنشور"
-
-#: includes/classes/class-settings.php:361
-msgid "Allowed Post Statuses"
-msgstr "حالات المنشورات المسموح بها"
-
-#: includes/classes/class-settings.php:362
-msgid "Choose which post statuses can be accessed via shortlinks"
-msgstr "اختر حالات المنشورات التي يمكن الوصول إليها عبر الروابط القصيرة"
-
-#: includes/classes/class-settings.php:363
+#: includes/classes/class-settings.php:271
 msgid ""
 "Select which post statuses are accessible when visiting a PublishPress "
 "shortlink."
 msgstr ""
-"حدد حالات المنشورات التي يمكن الوصول إليها عند زيارة رابط اختصار "
+"حدد حالات المنشورات التي يمكن الوصول إليها عند زيارة رابط مختصر من "
 "PublishPress."
 
-#: includes/classes/class-settings.php:366
-msgid "Published"
-msgstr "منشور"
+#: includes/classes/class-settings.php:287
+#, fuzzy
+msgid "PublishPress Statuses Plugin Detected:"
+msgstr "نظام PublishPress للروابط القصيرة المجانية"
 
-#: includes/classes/class-settings.php:367
+#: includes/classes/class-settings.php:288
+msgid ""
+"To use core PublishPress statuses with Shortlinks, Please enable the "
+"Shortlinks post type in PublishPress Statuses workflow settings."
+msgstr ""
+"لاستخدام حالات PublishPress الأساسية مع Shortlinks، يرجى تفعيل نوع المنشور "
+"Shortlinks في إعدادات سير عمل حالات PublishPress."
+
+#: includes/classes/class-settings.php:307
+msgid "Elementor Detected:"
+msgstr "تم اكتشاف Elementor:"
+
+#: includes/classes/class-settings.php:308
+msgid ""
+"Shortlink prefix is required for proper rendering of Elementor revisions. "
+"It is advisable to keep it enabled."
+msgstr ""
+"تتطلب بادئة الرابط القصير لتقديم النسخ بشكل صحيح من Elementor. من المستحسن "
+"إبقائها مفعلة."
+
+#: includes/classes/class-settings.php:340
+msgid "TinyPress Shortlinks Notice:"
+msgstr "إشعار روابط TinyPress:"
+
+#: includes/classes/class-settings.php:341
+msgid ""
+"Elementor is active. Shortlink prefix has been automatically disabled, it "
+"is required for optimal compatibility with Elementor revisions."
+msgstr ""
+"Elementor نشط. تم تعطيل بادئة الرابط القصير تلقائيًا، وهي مطلوبة للتوافق "
+"الأمثل مع نسخ Elementor."
+
+#: includes/classes/class-settings.php:404
+msgid "Options"
+msgstr "الخيارات"
+
+#: includes/classes/class-settings.php:409
+msgid "Shortlink Prefix"
+msgstr "بادئة الرابط القصير"
+
+#: includes/classes/class-settings.php:410
+msgid "Add a prefix between your domain name and shortlink."
+msgstr "أضف بادئة بين اسم المجال الخاص بك والرابط القصير."
+
+#: includes/classes/class-settings.php:417
+msgid "Prefix Slug"
+msgstr "بادئة الرابط"
+
+#: includes/classes/class-settings.php:418
+msgid "Custom prefix slug."
+msgstr "بادئة مخصصة للرابط."
+
+#: includes/classes/class-settings.php:419
+msgid "This text will be added between your domain name and shortlink."
+msgstr "سيتم إضافة هذا النص بين اسم المجال الخاص بك والرابط القصير."
+
+#: includes/classes/class-settings.php:420
+#: includes/classes/class-settings.php:421
+msgid "go"
+msgstr "اذهب"
+
+#: includes/classes/class-settings.php:427
+msgid "Keyboard Shortcut"
+msgstr "اختصار لوحة المفاتيح"
+
+#: includes/classes/class-settings.php:428
+msgid "Create shortlinks from anywhere inside your WordPress dashboard."
+msgstr "أنشئ روابط قصيرة من أي مكان داخل لوحة تحكم WordPress الخاصة بك."
+
+#: includes/classes/class-settings.php:429
+#: includes/classes/class-settings.php:430
+msgid "Ctrl or Cmd + /"
+msgstr "Ctrl أو Cmd + /"
+
+#: includes/classes/class-settings.php:439
+msgid "Remove from Admin Bar"
+msgstr "إزالة من شريط الإدارة"
+
+#: includes/classes/class-settings.php:440
+msgid "Hide the \"Shorten\" button from the WordPress admin bar."
+msgstr "إخفاء زر \"تقليل\" من شريط إدارة WordPress."
+
+#: includes/classes/class-settings.php:446
+msgid "Role Management"
+msgstr "إدارة الأدوار"
+
+#: includes/classes/class-settings.php:451
+msgid "Who Can View Shortlinks"
+msgstr "من يمكنه رؤية الروابط القصيرة"
+
+#: includes/classes/class-settings.php:452
+msgid "Only selected user roles can view links."
+msgstr "فقط أدوار المستخدمين المحددين يمكنهم رؤية الروابط."
+
+#: includes/classes/class-settings.php:460
+msgid "Who Can Create/Edit Shortlinks"
+msgstr "من يمكنه إنشاء/تعديل الروابط القصيرة"
+
+#: includes/classes/class-settings.php:461
+msgid "Only selected user roles can create or edit links."
+msgstr "فقط أدوار المستخدمين المحددين يمكنهم إنشاء أو تعديل الروابط."
+
+#: includes/classes/class-settings.php:470
+msgid "Who Can See Analytics"
+msgstr "من يمكنه رؤية التحليلات"
+
+#: includes/classes/class-settings.php:471
+msgid "Only selected user roles can see analytics."
+msgstr "فقط أدوار المستخدمين المحددين يمكنهم رؤية التحليلات."
+
+#: includes/classes/class-settings.php:480
+msgid "Who Can Control Settings"
+msgstr "من يمكنه التحكم في الإعدادات"
+
+#: includes/classes/class-settings.php:481
+msgid "Only selected user roles can control settings."
+msgstr "فقط أدوار المستخدمين المحددين يمكنهم التحكم في الإعدادات."
+
+#: includes/classes/class-settings.php:490
+msgid "Auto-Linking"
+msgstr "الارتباط التلقائي"
+
+#: includes/classes/class-settings.php:495
+msgid "Enable Auto-Linking"
+msgstr "تفعيل الارتباط التلقائي"
+
+#: includes/classes/class-settings.php:496
+msgid "Automatically convert keywords to shortlinks in post content."
+msgstr "تحويل الكلمات الرئيسية تلقائيًا إلى روابط قصيرة في محتوى المنشور."
+
+#: includes/classes/class-settings.php:497
+msgid ""
+"When enabled, keywords configured in shortlink settings will be "
+"automatically linked in your content."
+msgstr ""
+"عند التفعيل، سيتم ربط الكلمات الرئيسية المكونة في إعدادات الرابط القصير "
+"تلقائيًا في محتواك."
+
+#: includes/classes/class-settings.php:503
+msgid "Open Auto-Links In"
+msgstr "فتح الروابط التلقائية في"
+
+#: includes/classes/class-settings.php:504
+msgid "Choose how auto-linked keywords should open."
+msgstr "اختر كيفية فتح الكلمات الرئيسية المرتبطة تلقائيًا."
+
+#: includes/classes/class-settings.php:506
+msgid "Same tab"
+msgstr "نفس علامة التبويب"
+
+#: includes/classes/class-settings.php:507
+msgid "New tab"
+msgstr "علامة تبويب جديدة"
+
+#: includes/classes/class-settings.php:515
+msgid "Auto-Link Color"
+msgstr "لون الارتباط التلقائي"
+
+#: includes/classes/class-settings.php:516
+msgid "Choose the color for auto-linked keywords."
+msgstr "اختر اللون للكلمات الرئيسية المرتبطة تلقائيًا."
+
+#: includes/classes/class-settings.php:523
+msgid "Auto-List Links"
+msgstr "قائمة الروابط التلقائية"
+
+#: includes/classes/class-settings.php:528
+msgid "Auto-List Shortlinks"
+msgstr "روابط مختصرة تلقائية"
+
+#: includes/classes/class-settings.php:529
+msgid ""
+"When enabled, shortlinks will appear in the \"All Links\" table based on "
+"the behavior you configure below."
+msgstr ""
+"عند التفعيل، ستظهر الروابط المختصرة في جدول \"جميع الروابط\" بناءً على "
+"السلوك الذي تقوم بتكوينه أدناه."
+
+#: includes/classes/class-settings.php:535
+msgid "Configure Post Types"
+msgstr "تكوين أنواع المنشورات"
+
+#: includes/classes/class-settings.php:536
+msgid "Set when links should be auto-listed for each post type"
+msgstr "حدد متى يجب أن يتم إدراج الروابط تلقائيًا لكل نوع منشور"
+
+#: includes/classes/class-settings.php:537
+msgid ""
+"Add post types and configure when their shortlinks should appear in the "
+"\"All Links\" table. Changes are saved automatically."
+msgstr ""
+"أضف أنواع المنشورات وقم بتكوين متى يجب أن تظهر روابطها المختصرة في جدول "
+"\"جميع الروابط\". يتم حفظ التغييرات تلقائيًا."
+
+#: includes/classes/class-settings.php:544
+#: includes/classes/class-statuses.php:233
+msgid "Post Status Visibility"
+msgstr "رؤية حالة المنشور"
+
+#: includes/classes/class-settings.php:549
+msgid "Allowed Post Statuses"
+msgstr "حالات المنشورات المسموح بها"
+
+#: includes/classes/class-settings.php:550
+msgid "Choose which post statuses can be accessed via shortlinks"
+msgstr "اختر حالات المنشورات التي يمكن الوصول إليها عبر الروابط المختصرة"
+
+#: includes/classes/class-settings.php:554
+msgid "Published"
+msgstr "تم النشر"
+
+#: includes/classes/class-settings.php:555
 msgid "Draft"
 msgstr "مسودة"
 
-#: includes/classes/class-settings.php:368
+#: includes/classes/class-settings.php:556
 msgid "Pending Review"
 msgstr "قيد المراجعة"
 
-#: includes/classes/class-settings.php:369
+#: includes/classes/class-settings.php:557
 msgid "Private"
 msgstr "خاص"
 
-#: includes/classes/class-settings.php:377
+#: includes/classes/class-settings.php:565
 msgid "Expired Links"
-msgstr "الروابط المنتهية"
+msgstr "روابط منتهية"
 
-#: includes/classes/class-settings.php:382
+#: includes/classes/class-settings.php:570
 msgid "Default Expired Redirect URL"
-msgstr "رابط إعادة التوجيه الافتراضي منتهي الصلاحية"
+msgstr "رابط إعادة التوجيه الافتراضي للروابط المنتهية"
 
-#: includes/classes/class-settings.php:383
+#: includes/classes/class-settings.php:571
 msgid "Where should expired shortlinks redirect?"
-msgstr "أين يجب أن تعيد توجيه الروابط القصيرة المنتهية؟"
+msgstr "أين يجب أن تعيد الروابط المختصرة المنتهية التوجيه؟"
 
-#: includes/classes/class-settings.php:384
+#: includes/classes/class-settings.php:572
 msgid ""
 "When a shortlink expires, visitors will be redirected to this URL instead "
 "of seeing an error. Leave empty to show the default expiration message."
 msgstr ""
-"عند انتهاء صلاحية رابط الاختصار، سيتم إعادة توجيه الزوار إلى هذا العنوان "
-"بدلاً من رؤية خطأ. اتركه فارغًا لعرض رسالة انتهاء الصلاحية الافتراضية."
+"عند انتهاء صلاحية الرابط المختصر، سيتم إعادة توجيه الزوار إلى هذا الرابط "
+"بدلاً من رؤية خطأ. اتركه فارغًا لعرض رسالة انتهاء افتراضية."
 
-#: includes/classes/class-settings.php:396
+#: includes/classes/class-settings.php:584
 msgid "Revisions"
-msgstr "المراجعات"
+msgstr "الإصدارات"
 
-#: includes/classes/class-settings.php:401
+#: includes/classes/class-settings.php:589
 msgid "Revision Link Visibility"
-msgstr "رؤية رابط المراجعة"
+msgstr "رؤية رابط الإصدار"
 
-#: includes/classes/class-settings.php:402
+#: includes/classes/class-settings.php:590
 msgid ""
 "When enabled, revision shortlinks will appear in the \"All Shortlinks\" "
 "table based on the behavior you configure below."
 msgstr ""
-"عند التمكين، ستظهر روابط الاختصار في جدول \"جميع الروابط\" بناءً على السلوك "
-"الذي تقوم بتكوينه أدناه."
+"عند التفعيل، ستظهر الروابط المختصرة للإصدارات في جدول \"جميع الروابط "
+"المختصرة\" بناءً على السلوك الذي تقوم بتكوينه أدناه."
 
-#: includes/classes/class-settings.php:404
+#: includes/classes/class-settings.php:592
 msgid "When Revision is Created"
-msgstr "عند إنشاء النسخة"
+msgstr "عند إنشاء مراجعة"
 
-#: includes/classes/class-settings.php:406
+#: includes/classes/class-settings.php:594
 msgid "When Revision is Created or Link is First Used"
-msgstr "عند إنشاء النسخة أو استخدام الرابط لأول مرة"
+msgstr "عند إنشاء مراجعة أو استخدام الرابط لأول مرة"
 
-#: includes/classes/class-settings.php:414
+#: includes/classes/class-settings.php:602
 msgid "Show Shortlink in Revision Table"
-msgstr "عرض الرابط المختصر في جدول المراجعة"
+msgstr "عرض الرابط القصير في جدول المراجعات"
 
-#: includes/classes/class-settings.php:415
+#: includes/classes/class-settings.php:603
 msgid "Display shortlink column when viewing revisions in PublishPress Revisions."
 msgstr "عرض عمود الرابط القصير عند عرض المراجعات في PublishPress Revisions."
 
-#: includes/classes/class-settings.php:421
+#: includes/classes/class-settings.php:609
 msgid "Revision Visibility for Visitors"
 msgstr "رؤية المراجعة للزوار"
 
-#: includes/classes/class-settings.php:422
+#: includes/classes/class-settings.php:610
 msgid "Allow logged-out visitors to view revision content via shortlinks."
-msgstr ""
-"السماح للزوار الذين قاموا بتسجيل الخروج بعرض محتوى المراجعة عبر الروابط "
-"القصيرة."
+msgstr "السماح للزوار المسجلين خارج النظام بعرض محتوى المراجعة عبر الروابط القصيرة."
 
-#: includes/classes/class-settings.php:423
+#: includes/classes/class-settings.php:611
 msgid ""
 "By default, PublishPress Revisions blocks visitors from viewing revision "
 "previews. When enabled, revision shortlinks will render the revision "
 "content directly for logged-out visitors instead of redirecting to the "
 "preview URL."
 msgstr ""
-"بشكل افتراضي، تمنع PublishPress Revisions الزوار من عرض معاينات المراجعة. "
-"عند التمكين، ستظهر روابط الاختصار للمراجعة محتوى المراجعة مباشرة للزوار غير "
-"المسجلين بدلاً من إعادة التوجيه إلى عنوان URL للمعاينة. ينطبق هذا على جميع "
-"روابط الاختصار للمراجعة الموجودة بغض النظر عن الإعداد أعلاه."
+"بشكل افتراضي، يمنع PublishPress Revisions الزوار من عرض معاينات المراجعة. "
+"عند التمكين، ستظهر الروابط القصيرة للمراجعة محتوى المراجعة مباشرة للزوار "
+"المسجلين خارج النظام بدلاً من إعادة التوجيه إلى عنوان URL للمعاينة."
 
-#: includes/classes/class-settings.php:444
+#: includes/classes/class-settings.php:632
 msgid "Dummy"
 msgstr "وهمي"
 
-#: includes/classes/class-settings.php:488
+#: includes/classes/class-settings.php:676
 msgid "No post types configured yet. Click \"Add Post Type\" to get started."
-msgstr "لم يتم تكوين أي أنواع منشورات حتى الآن. انقر \"إضافة نوع منشور\" للبدء."
+msgstr "لا توجد أنواع منشورات مُعدة بعد. انقر على \"إضافة نوع منشور\" للبدء."
 
-#: includes/classes/class-settings.php:520
+#: includes/classes/class-settings.php:708
 msgid "Add Post Type"
-msgstr "إضافة نوع المنشور"
+msgstr "إضافة نوع منشور"
 
 #: includes/classes/class-table-logs.php:70
 msgid "Log entry deleted successfully."
 msgstr "تم حذف سجل الدخول بنجاح."
 
-#: includes/classes/class-table-logs.php:79
+#: includes/classes/class-table-logs.php:80
+#. translators: %d: number of log entries deleted
 #, php-format
 msgid "%d log entries deleted successfully."
-msgstr "%d سجل تم حذفه بنجاح."
+msgstr "%d سجلات دخول تم حذفها بنجاح."
 
-#: includes/classes/class-table-logs.php:83
+#: includes/classes/class-table-logs.php:84
 msgid "All logs have been cleared."
 msgstr "تم مسح جميع السجلات."
 
-#: includes/classes/class-table-logs.php:162
+#: includes/classes/class-table-logs.php:163
 msgid "Title"
 msgstr "العنوان"
 
-#: includes/classes/class-table-logs.php:164
+#: includes/classes/class-table-logs.php:165
 msgid "Details"
-msgstr "تفاصيل"
+msgstr "التفاصيل"
 
-#: includes/classes/class-table-logs.php:198
+#: includes/classes/class-table-logs.php:199
 msgid "Are you sure you want to delete this log entry?"
-msgstr "هل أنت متأكد أنك تريد حذف إدخال السجل هذا؟"
+msgstr "هل أنت متأكد أنك تريد حذف سجل الدخول هذا؟"
 
-#: includes/classes/class-table-logs.php:249
-#, fuzzy
+#: includes/classes/class-table-logs.php:250
 msgid "Tablet"
-msgstr "تفعيل"
+msgstr "جهاز لوحي"
 
-#: includes/classes/class-table-logs.php:251
+#: includes/classes/class-table-logs.php:252
 msgid "Mobile"
 msgstr "جوال"
 
-#: includes/classes/class-table-logs.php:253
+#: includes/classes/class-table-logs.php:254
 msgid "Desktop"
 msgstr "سطح المكتب"
 
-#: includes/classes/class-table-logs.php:307
+#: includes/classes/class-table-logs.php:308
 #. translators: 1: user display name, 2: location name, 3: visit date/time
 #, php-format
 msgid "%1$s from %2$s visited at %3$s"
-msgstr "%s من %s زار في %s"
+msgstr "%1$s من %2$s زار في %3$s"
 
-#: includes/classes/class-table-logs.php:310
+#: includes/classes/class-table-logs.php:311
 #. translators: 1: user display name, 2: visit date/time
 #, php-format
 msgid "%1$s visited at %2$s"
-msgstr "%s من %s زار في %s"
+msgstr "%1$s زار في %2$s"
 
-#: includes/classes/class-table-logs.php:314
+#: includes/classes/class-table-logs.php:315
 #. translators: 1: location name, 2: visit date/time
 #, php-format
 msgid "From %1$s, visited at %2$s"
-msgstr "%s من %s زار في %s"
+msgstr "من %1$s، زار في %2$s"
 
-#: includes/classes/class-table-logs.php:317
+#: includes/classes/class-table-logs.php:318
 #. translators: %s: visit date/time
 #, php-format
 msgid "Visited at %s"
-msgstr "تمت الزيارة في %s"
+msgstr "زار في %s"
 
-#: includes/classes/class-table-logs.php:329
+#: includes/classes/class-table-logs.php:330
 #. translators: %s: device type and browser name, e.g. "Mobile Chrome"
 #, php-format
 msgid "via %s"
@@ -1064,30 +1141,30 @@ msgid "Invalid URL scheme. Only http, https, ftp, ftps, and mailto are allowed."
 msgstr "نظام عنوان URL غير صالح. يُسمح فقط بـ http و https و ftp و ftps و mailto."
 
 #: includes/functions.php:229
-#, fuzzy
 msgid "Invalid URL."
-msgstr "رابط غير صالح أو فارغ"
+msgstr "عنوان URL غير صالح."
 
 #: includes/functions.php:233
 msgid "Tiny slug could not created."
-msgstr "لم يتم إنشاء الصيغة الصغيرة."
+msgstr "لم يتم إنشاء الشعار الصغير."
 
-#: includes/functions.php:251
+#: includes/functions.php:252
+#. translators: %s: link ID number
 #, php-format
 msgid "Link - %s"
-msgstr "الرابط - %s"
+msgstr "رابط - %s"
 
 #: templates/admin-modal-new-link.php:12
 msgid "Shortlink will appear here"
-msgstr "سيظهر الرابط المختصر هنا"
+msgstr "سيظهر الرابط القصير هنا"
 
 #: templates/admin-modal-new-link.php:20
 msgid "Enter a long URL and make a shortlink"
-msgstr "أدخل عنوان URL طويل وصنع رابط قصير"
+msgstr "أدخل عنوان URL طويل وأنشئ رابطًا قصيرًا"
 
 #: templates/admin-modal-new-link.php:25
 msgid "Long URL"
-msgstr "رابط طويل"
+msgstr "عنوان URL الطويل"
 
 #: templates/admin-modal-new-link.php:37
 msgid "Close"
@@ -1097,62 +1174,84 @@ msgstr "إغلاق"
 msgid "Create Shortlink"
 msgstr "إنشاء رابط قصير"
 
-#: templates/admin/analytics.php:38
-msgid "Today"
-msgstr "اليوم"
-
-#: templates/admin/analytics.php:39
-msgid "Last 7 Days"
-msgstr "آخر 7 أيام"
-
-#: templates/admin/analytics.php:40
-msgid "Last 1 Month"
-msgstr "آخر شهر واحد"
-
-#: templates/admin/analytics.php:41
-msgid "Last 1 Year"
-msgstr "آخر سنة واحدة"
-
 #: templates/admin/analytics.php:45
+#: templates/admin/analytics.php:64
 msgid "Reset Today's Analytics"
 msgstr "إعادة تعيين تحليلات اليوم"
 
-#: templates/admin/footer.php:14
+#: templates/admin/analytics.php:46
+msgid "Reset Week's Analytics"
+msgstr "إعادة تعيين تحليلات الأسبوع"
+
+#: templates/admin/analytics.php:47
+msgid "Reset Month's Analytics"
+msgstr "إعادة تعيين تحليلات الشهر"
+
+#: templates/admin/analytics.php:48
+msgid "Reset Year's Analytics"
+msgstr "إعادة تعيين تحليلات السنة"
+
+#: templates/admin/analytics.php:49
+msgid ""
+"Are you sure you want to reset the analytics for this period? This action "
+"cannot be undone."
+msgstr ""
+"هل أنت متأكد أنك تريد إعادة تعيين التحليلات لهذه الفترة؟ لا يمكن التراجع عن "
+"هذا الإجراء."
+
+#: templates/admin/analytics.php:57
+msgid "Today"
+msgstr "اليوم"
+
+#: templates/admin/analytics.php:58
+msgid "Last 7 Days"
+msgstr "آخر 7 أيام"
+
+#: templates/admin/analytics.php:59
+msgid "Last 1 Month"
+msgstr "آخر شهر واحد"
+
+#: templates/admin/analytics.php:60
+msgid "Last 1 Year"
+msgstr "آخر سنة واحدة"
+
+#: templates/admin/footer.php:16
+#. translators: %1$s: plugin name, %2$s: star rating icon
 #, php-format
 msgid "If you like %1$s please leave us a %2$s rating. Thank you!"
-msgstr "إذا أعجبك %1$s، يرجى ترك تقييم %2$s لنا. شكرًا لك!"
+msgstr "إذا كنت تحب %1$s، يرجى ترك لنا تقييم %2$s. شكرًا لك!"
 
-#: templates/admin/footer.php:21
+#: templates/admin/footer.php:24
 msgid "About"
-msgstr "عن"
+msgstr "حول"
 
-#: templates/admin/footer.php:26
+#: templates/admin/footer.php:29
 msgid "Documentation"
-msgstr "توثيق"
+msgstr "التوثيق"
 
-#: templates/admin/footer.php:30
+#: templates/admin/footer.php:33
 msgid "Contact"
-msgstr "تواصل"
+msgstr "اتصل"
 
 #: templates/admin/qr-code.php:16
 msgid "Download QR Code"
-msgstr "تنزيل رمز الاستجابة السريعة"
+msgstr "تحميل رمز الاستجابة السريعة"
 
 #: templates/admin/settings/browsers.php:8
 msgid "We have developed extensions for the below browsers."
-msgstr "لقد قمنا بتطوير ملحقات لمتصفحات الإنترنت أدناه."
+msgstr "لقد قمنا بتطوير إضافات لمتصفحات الإنترنت أدناه."
 
 #: templates/admin/settings/browsers.php:9
 msgid "Click on your preferred one to Download the extension."
-msgstr "انقر على المفضل لديك لتنزيل الإضافة."
+msgstr "انقر على المفضل لديك لتحميل الإضافة."
 
 #: templates/admin/settings/browsers.php:16
 msgid "Download the Extension"
-msgstr "تنزيل الإضافة"
+msgstr "تحميل الإضافة"
 
 #: templates/admin/settings/supports.php:17
 msgid "Need PublishPress Shortlinks Support?"
-msgstr "تحتاج دعم روابط قصيرة من PublishPress؟"
+msgstr "هل تحتاج إلى دعم روابط قصيرة لـ PublishPress؟"
 
 #: templates/admin/settings/supports.php:22
 msgid "If you need help or have a new feature request, let us know."
@@ -1164,79 +1263,16 @@ msgstr "طلب الدعم"
 
 #: templates/admin/settings/supports.php:29
 msgid "Detailed documentation is also available on the plugin website."
-msgstr "يتوفر أيضًا توثيق مفصل على موقع الإضافة."
+msgstr "التوثيق التفصيلي متاح أيضًا على موقع الإضافة."
 
 #: templates/admin/settings/supports.php:31
 msgid "View Knowledge Base"
 msgstr "عرض قاعدة المعرفة"
 
-#: tinypress.php:79
+#: tinypress.php:98
 msgid "This plugin can be deleted."
 msgstr "يمكن حذف هذه الإضافة."
 
-#: tinypress.php:287
+#: tinypress.php:355
 msgid "Copied."
 msgstr "تم النسخ."
-
-#: includes/wp-dev-kit/classes/class-utils.php
-#, php-format
-msgid "Add %s"
-msgstr "أضف %s"
-
-#: includes/wp-dev-kit/classes/class-utils.php
-#, php-format
-msgid "Edit %s"
-msgstr "تعديل"
-
-#: includes/wp-dev-kit/classes/class-utils.php
-#, php-format
-msgid "New %s"
-msgstr "جديد %s"
-
-#: includes/wp-dev-kit/classes/class-utils.php
-#, php-format
-msgid "View %s"
-msgstr "عرض %s"
-
-#: includes/wp-dev-kit/classes/class-utils.php
-#, php-format
-msgid "Search %s"
-msgstr "بحث عن %s"
-
-#: includes/wp-dev-kit/classes/class-utils.php
-#, php-format
-msgid "No %s found"
-msgstr "لم يتم العثور على المنشور."
-
-#: includes/wp-dev-kit/classes/class-utils.php
-#, php-format
-msgid "No %s found in trash"
-msgstr "لا يوجد %s في سلة المهملات"
-
-#: includes/wp-dev-kit/classes/class-utils.php
-#, php-format
-msgid "Parent %s"
-msgstr "الأب %s"
-
-#: includes/wp-dev-kit/classes/class-utils.php
-#, php-format
-msgid "%s Details"
-msgstr "تفاصيل"
-
-#: includes/wp-dev-kit/classes/class-utils.php
-#, php-format
-msgid "This is where you can create and manage %s."
-msgstr "هنا يمكنك إنشاء وإدارة %s."
-
-#: templates/admin/analytics.php
-#, fuzzy
-msgid "Reset Week's Analytics"
-msgstr "من يمكنه رؤية التحليلات"
-
-#: templates/admin/analytics.php
-msgid "Reset Month's Analytics"
-msgstr "إعادة تعيين تحليلات الشهر"
-
-#: templates/admin/analytics.php
-msgid "Reset Year's Analytics"
-msgstr "إعادة تعيين تحليلات السنة"

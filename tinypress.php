@@ -4,7 +4,7 @@
  * Plugin Name: PublishPress Shortlinks Free
  * Plugin URI:  https://publishpress.com/shortlinks/
  * Description: Create custom links for your posts. These links are brandable, trackable, and can have custom view permissions.
- * Version: 1.5.0
+ * Version: 1.6.0
  * Text Domain: tinypress
  * Author: PublishPress
  * Author URI: https://publishpress.com/
@@ -31,11 +31,30 @@ if (class_exists('PublishPressInstanceProtection\\Config')) {
     $pluginChecker = new PublishPressInstanceProtection\InstanceChecker($pluginCheckerConfig);
 }
 
+$bundledTranslationsPath = '/publishpress/bundled-translations/core/include.php';
+
+if (file_exists(__DIR__ . '/lib/vendor' . $bundledTranslationsPath)) {
+    require_once __DIR__ . '/lib/vendor' . $bundledTranslationsPath;
+} elseif (defined('TINYPRESS_LIB_VENDOR_PATH') && file_exists(TINYPRESS_LIB_VENDOR_PATH . $bundledTranslationsPath)) {
+    require_once TINYPRESS_LIB_VENDOR_PATH . $bundledTranslationsPath;
+}
+
+add_action('plugins_loaded', function () {
+    if (class_exists('PublishPress\BundledTranslations\BundledTranslations')) {
+        $bundledTranslations = new PublishPress\BundledTranslations\BundledTranslations(
+            'tinypress',
+            __DIR__ . '/languages',
+            __FILE__
+        );
+        $bundledTranslations->init();
+    }
+}, 10);
+
 if (! defined('TINYPRESS_LOADED')) {
     define('TINYPRESS_LOADED', 1);
 
     define('TINYPRESS_FILE', __DIR__ . '/tinypress.php');
-    define('TINYPRESS_PLUGIN_VERSION', '1.5.0');
+    define('TINYPRESS_PLUGIN_VERSION', '1.6.0');
 
     if (! defined('TINYPRESS_LIB_VENDOR_PATH')) {
         define('TINYPRESS_LIB_VENDOR_PATH', __DIR__ . '/lib/vendor');
@@ -184,6 +203,10 @@ if (! defined('TINYPRESS_LOADED')) {
                     $settings = array();
                 }
 
+                if (! isset($settings['tinypress_autolink_enabled'])) {
+                    $settings['tinypress_autolink_enabled'] = '1';
+                }
+
                 if (! isset($settings['tinypress_autolist_enabled'])) {
                     $settings['tinypress_autolist_enabled'] = '1';
                 }
@@ -203,6 +226,48 @@ if (! defined('TINYPRESS_LOADED')) {
             
                 if (! isset($settings['tinypress_allowed_post_statuses'])) {
                     $settings['tinypress_allowed_post_statuses'] = array( 'publish', 'draft', 'pending', 'private', 'future' );
+
+                    if (defined('PUBLISHPRESS_STATUSES_VERSION') && class_exists('PublishPress_Statuses')) {
+                        $pp_statuses = PublishPress_Statuses::instance();
+                        $pp_statuses->clearStatusCache();
+                        $all_statuses = $pp_statuses->getPostStatuses(array(), 'object', array('show_disabled' => true));
+
+                        if (is_array($all_statuses) && ! empty($all_statuses)) {
+                            $positions = get_option('publishpress_status_positions');
+                            $truly_disabled = array();
+                            if (is_array($positions) && ! empty($positions)) {
+                                $disabled_index = array_search('_disabled', $positions);
+                                if ($disabled_index !== false) {
+                                    $truly_disabled = array_slice($positions, $disabled_index + 1);
+                                    $truly_disabled = array_values(array_filter($truly_disabled, function ($status) {
+                                        return strpos($status, '_') !== 0;
+                                    }));
+                                }
+                            }
+
+                            foreach ($all_statuses as $status_name => $status_obj) {
+                                if (in_array($status_name, array( 'publish', 'draft', 'pending', 'private', 'future', 'trash', 'auto-draft', 'inherit' ), true)) {
+                                    continue;
+                                }
+
+                                if (strpos($status_name, '_') === 0) {
+                                    continue;
+                                }
+
+                                if (in_array($status_name, $truly_disabled, true)) {
+                                    continue;
+                                }
+
+                                if (!empty($status_obj->for_revision) && ! defined('PUBLISHPRESS_STATUSES_PRO_VERSION')) {
+                                    continue;
+                                }
+
+                                $settings['tinypress_allowed_post_statuses'][] = $status_name;
+                            }
+                        }
+
+                        $settings['tinypress_allowed_post_statuses'] = array_values(array_unique($settings['tinypress_allowed_post_statuses']));
+                    }
                 }
 
                 if (! isset($settings['tinypress_role_view'])) {
@@ -251,14 +316,17 @@ if (! defined('TINYPRESS_LOADED')) {
                 require_once TINYPRESS_PLUGIN_DIR . 'includes/classes/class-columns-link.php';
                 require_once TINYPRESS_PLUGIN_DIR . 'includes/classes/class-settings.php';
                 require_once TINYPRESS_PLUGIN_DIR . 'includes/classes/class-redirection.php';
+                require_once TINYPRESS_PLUGIN_DIR . 'includes/classes/class-autolink.php';
                 require_once TINYPRESS_PLUGIN_DIR . 'includes/classes/class-autolist.php';
                 require_once TINYPRESS_PLUGIN_DIR . 'includes/classes/class-autolist-ajax.php';
                 require_once TINYPRESS_PLUGIN_DIR . 'includes/classes/class-reviews.php';
                 require_once TINYPRESS_PLUGIN_DIR . 'includes/classes/class-revision.php';
+                require_once TINYPRESS_PLUGIN_DIR . 'includes/classes/class-statuses.php';
 
                 new TINYPRESS_Hooks();
                 new TINYPRESS_Settings();
                 new TINYPRESS_Redirection();
+                new TINYPRESS_AutoLink();
                 new TINYPRESS_AutoList();
                 TINYPRESS_Autolist_Ajax::instance();
                 SHORTLINKS_Reviews::instance();
